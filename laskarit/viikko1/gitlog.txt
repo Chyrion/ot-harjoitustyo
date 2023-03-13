@@ -1,0 +1,96 @@
+[33mcommit a10bd8857b4c38636ab7f999cc2c35ade487964d[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 11:09:53 2023 +0200
+
+    file1 pois, file2 uudelleennimetty, file3 muutokset??
+
+ tiedostoja/file2             | 0
+ tiedostoja/{file1 => file22} | 0
+ tiedostoja/file3             | 1 [32m+[m
+ 3 files changed, 1 insertion(+)
+
+[33mcommit 85b70255a421e50d64e85a27570803c067554c39[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 11:07:22 2023 +0200
+
+    tiedostoja hakemisto ja 3 tiedostoa luotu
+
+ tiedostoja/file1 | 0
+ tiedostoja/file2 | 0
+ tiedostoja/file3 | 0
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+
+[33mcommit ebe206e700334258312d839b4c36f00d6c9ba146[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 11:01:21 2023 +0200
+
+    add -p tehty
+
+ eka.txt    | 2 [32m+[m[31m-[m
+ kolmas.txt | 5 [32m++++[m[31m-[m
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+[33mcommit ee4842ac6ca5566b7f90893b114f5babe5634b34[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 10:59:41 2023 +0200
+
+    tiedosto uudelleennimetty ekaksi
+
+ tiedosto.txt => eka.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+[33mcommit e8c26faa274f32b91fb415ab954ee069a21af89b[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 10:58:51 2023 +0200
+
+    toinen poistettu?
+
+ toinen.txt | 1 [31m-[m
+ 1 file changed, 1 deletion(-)
+
+[33mcommit 15c37a21ea0f49024f141627480daff110abf959[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 10:56:46 2023 +0200
+
+    Tiedostosta poistettu ja lisätty
+
+ tiedosto.txt | 7 [32m+++++[m[31m--[m
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+[33mcommit 82e79d53362ac8bcf7e4bcfe2e895b887d0f6eb2[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 10:54:07 2023 +0200
+
+    Tiedostoon paljon tekstiä
+
+ tiedosto.txt | 100 [32m++++++++++++++++++++++++++++++++++++++++++++++++++++++++++[m[31m-[m
+ 1 file changed, 99 insertions(+), 1 deletion(-)
+
+[33mcommit b55695b9a06dde640e1ba51079a284ad5fdd240d[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 10:51:46 2023 +0200
+
+    muutokset toinen ja kolmas
+
+ kolmas.txt | 1 [32m+[m
+ toinen.txt | 1 [32m+[m
+ 2 files changed, 2 insertions(+)
+
+[33mcommit 95e45b715e2045b29a7b94c7552941ef6cd5b6ae[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 10:48:51 2023 +0200
+
+    muutos ja lisäys
+
+ tiedosto.txt | 1 [32m+[m
+ toinen.txt   | 0
+ 2 files changed, 1 insertion(+)
+
+[33mcommit 2773f4f972530f41204f3ab5a5d7b9ef5bc33442[m
+Author: Chyrion <laine.vili@gmail.com>
+Date:   Mon Mar 13 10:47:58 2023 +0200
+
+    tiedosto.txt luotu
+
+ tiedosto.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)

@@ -1,0 +1,6 @@
+C:.
+├───ot-harjoitustyö
+│   └───laskarit
+│       └───viikko1
+└───ot_viikko1
+    └───tiedostoja
