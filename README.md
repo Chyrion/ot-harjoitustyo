@@ -9,3 +9,5 @@ Tämä on ohjelmistotekniikan harjoitustyön repositorio. Tämä teksti on suome
 [gitlog.txt](laskarit/viikko1/gitlog.txt)
 
 (muokkaus paikallisella koneella)
+
+epäsynkrooni muutos!
