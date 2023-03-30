@@ -1,5 +1,0 @@
-# Monopolin luokkakaavio
-
-```mermaid
-
-```
