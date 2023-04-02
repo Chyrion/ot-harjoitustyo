@@ -8,7 +8,7 @@ def main():
     window.title('Flightsim Logs Application')
     files = FileManager()
     users = files.userlist()
-    ui_view = UI(window, users)
+    ui_view = UI(window, users, files)
     ui_view.start()
 
     window.mainloop()

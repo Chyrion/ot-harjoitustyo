@@ -1,4 +1,5 @@
 import os
+import json
 
 
 class FileManager:
@@ -36,6 +37,12 @@ class FileManager:
         if username not in self._userlist:
             os.mkdir(self._data_folder_path + '/' + username)
             self._userlist.append(username)
+            userpath = self._data_folder_path + '/' + username
+            with open(userpath+'/'+username+'.json', 'w') as file:
+                data = {
+                    'username': username
+                }
+                json.dump(data, file)
             return True
         else:
             return False

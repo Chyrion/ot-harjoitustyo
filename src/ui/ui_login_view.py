@@ -1,4 +1,4 @@
-from tkinter import ttk, constants, StringVar
+from tkinter import ttk, constants
 from datamanager.filemanager import FileManager
 from datamanager.load_user_data import UserDataLoader
 from datamanager.save_user_data import UserDataSaver
@@ -7,14 +7,16 @@ from datamanager.save_user_data import UserDataSaver
 class UILoginView:
     """Login view for the user"""
 
-    def __init__(self, root, users):
+    def __init__(self, root, users, files, handle_user_select):
         """Class constructor"""
 
         self._root = root
         self._frame = None
         self._users = users
+        self._files = files
         self._user_labels = []
         self._new_user_field = None
+        self._handle_user_select = handle_user_select
 
         self._initalize()
 
@@ -36,7 +38,8 @@ class UILoginView:
     def _initialize_user_list(self):
         for user in self._users:
             label = ttk.Label(master=self._root, text=user)
-            button = ttk.Button(master=self._root, text='Select')
+            button = ttk.Button(master=self._root, text='Select',
+                                command=None)
             self._user_labels.append((label, button))
         for i in range(len(self._user_labels)):
             self._user_labels[i][0].grid(row=i+1, column=0)
@@ -45,7 +48,6 @@ class UILoginView:
     def _new_user(self):
         if len(self._new_user_field.get()) > 3:
             print('Trying to save new user')
-            files = FileManager()
             new_user_name = self._new_user_field.get()
             saver = UserDataSaver(new_user_name)
-            saver.save_to_file(files)
+            saver.save_to_file(self._files)
