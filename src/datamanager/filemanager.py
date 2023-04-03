@@ -1,5 +1,6 @@
 import os
 import json
+from entities.flight import Flight
 
 
 class FileManager:
@@ -40,7 +41,8 @@ class FileManager:
             userpath = self._data_folder_path + '/' + username
             with open(userpath+'/'+username+'.json', 'w') as file:
                 data = {
-                    'username': username
+                    'username': username,
+                    'flights': []
                 }
                 json.dump(data, file)
             return True
@@ -61,6 +63,7 @@ class FileManager:
         else:
             return False
 
+    @property
     def userlist(self):
         return self._userlist
 
@@ -79,3 +82,13 @@ class FileManager:
             self.new_user(username)
             return True
         return False
+
+    def save_new_flight(self, username: str, start: str, dest: str):
+        """Saves a new Flight object into the user's data file"""
+        flight = Flight(start, dest)
+        userfile = self._data_folder_path + f'/{username}/{username}.json'
+        file = open(userfile, 'r').read()
+        file_json = json.loads(file)
+        file_json['flights'].append(flight.to_dict())
+        with open(userfile, 'w') as file:
+            json.dump(file_json, file)
