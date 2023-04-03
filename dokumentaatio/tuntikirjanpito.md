@@ -1,3 +1,6 @@
 # Projektiin käytetty aika
 
-02.04. 6h: Projektin alustus, TKinterin opettetelu, projektin perustoimintojen aloittelu
+| Päiväys | Tunnit | Tehty                                                                             |
+| ------- | ------ | --------------------------------------------------------------------------------- |
+| 02.04   | 6      | Projektin alustus, TKinterin opettelu, projektin perustoimintojen aloittelu       |
+| 03.04   | 5      | Sivun vaihto ikkunassa, käyttäjätietojen laajennus, uusien lentojen tallentaminen |

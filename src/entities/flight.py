@@ -1,7 +1,7 @@
 class Flight:
     """Class representing a flight log entry"""
 
-    def __init__(self, start, destination):
+    def __init__(self, start: str, destination: str):
         """Class constructor
 
         args:

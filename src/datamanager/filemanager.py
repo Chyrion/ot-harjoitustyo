@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 from entities.flight import Flight
 
 
@@ -57,7 +58,7 @@ class FileManager:
                 The username of the user to be deleted
         """
         if username in self._userlist:
-            os.rmdir(self._data_folder_path + '/' + username)
+            shutil.rmtree(self._data_folder_path + '/' + username)
             self._get_users()
             return True
         else:
