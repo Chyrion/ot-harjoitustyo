@@ -17,7 +17,7 @@ class UILoginView:
         self._handle_user_select = handle_user_select
         self._selected_user = None
 
-        self._initalize()
+        self._initialize()
 
     def pack(self):
         self._frame.pack(fill=constants.X)
@@ -25,7 +25,7 @@ class UILoginView:
     def destroy(self):
         self._frame.destroy()
 
-    def _initalize(self):
+    def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
 
         main_label = ttk.Label(master=self._frame, text='Select user')
