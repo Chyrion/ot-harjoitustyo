@@ -63,3 +63,19 @@ class FileManager:
 
     def userlist(self):
         return self._userlist
+
+    def load_user_data(self, username):
+        """Loads user data"""
+        if username in self._userlist:
+            userfile = self._data_folder_path + f'/{username}/{username}.json'
+            with open(userfile, 'r') as file:
+                return json.load(file)
+        else:
+            return False
+
+    def save_user_data(self, username):
+        """Saves user data"""
+        if username not in self._userlist:
+            self.new_user(username)
+            return True
+        return False

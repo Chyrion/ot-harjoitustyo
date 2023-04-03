@@ -1,13 +1,11 @@
 from tkinter import ttk, constants
 from datamanager.filemanager import FileManager
-from datamanager.load_user_data import UserDataLoader
-from datamanager.save_user_data import UserDataSaver
 
 
 class UILoginView:
     """Login view for the user"""
 
-    def __init__(self, root, users, files, handle_user_select):
+    def __init__(self, root, users: list, files: FileManager, handle_user_select):
         """Class constructor"""
 
         self._root = root
@@ -49,5 +47,4 @@ class UILoginView:
         if len(self._new_user_field.get()) > 3:
             print('Trying to save new user')
             new_user_name = self._new_user_field.get()
-            saver = UserDataSaver(new_user_name)
-            saver.save_to_file(self._files)
+            self._files.new_user(new_user_name)

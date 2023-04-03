@@ -1,13 +1,11 @@
 from tkinter import ttk
 from datamanager.filemanager import FileManager
-from datamanager.load_user_data import UserDataLoader
-from datamanager.save_user_data import UserDataSaver
 
 
 class UIUserHomeview:
     """Responsible for creating the home page for a user"""
 
-    def __init__(self, root, username, files):
+    def __init__(self, root, username: str, files: FileManager):
         self._root = root
         self._frame = None
         self._username = username
@@ -25,5 +23,4 @@ class UIUserHomeview:
         name_label.grid(row=0, column=0)
 
     def _load_data(self):
-        loader = UserDataLoader(self._username)
-        return loader.load_user(self._files)
+        return self._files.load_user_data(self._username)
