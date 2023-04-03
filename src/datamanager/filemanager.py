@@ -4,7 +4,7 @@ from entities.flight import Flight
 
 
 class FileManager:
-    """Manages user data files and folder"""
+    """Manages user data files and folders"""
 
     def __init__(self):
         self._workingdirectory = os.getcwd()
