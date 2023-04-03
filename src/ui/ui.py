@@ -8,10 +8,10 @@ class UI:
         self._current_view = None
         self._users = users
         self._files = files
+        self._selected_user = None
 
     def start(self):
-        self._current_view = UILoginView(
-            self._root, self._users, self._files, self._show_homepage_view())
+        self._show_login_view()
 
     def _hide_current_view(self):
         if self._current_view:
@@ -23,9 +23,12 @@ class UI:
         self._hide_current_view()
 
         self._current_view = UILoginView(
-            self._root, self._users, self._files, self._show_homepage_view())
+            self._root, self._users, self._files, self._show_homepage_view)
 
     def _show_homepage_view(self):
+        if self._current_view is not None:
+            self._selected_user = self._current_view.selected_user()
         self._hide_current_view()
 
-        self._current_view = UIUserHomeview(self._root, 'Chyrion', self._files)
+        self._current_view = UIUserHomeview(
+            self._root, self._selected_user, self._files)

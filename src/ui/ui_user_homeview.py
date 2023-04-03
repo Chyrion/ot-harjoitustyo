@@ -13,6 +13,8 @@ class UIUserHomeview:
 
         self._userdata = self._load_data()
 
+        self._initialize()
+
     def destroy(self):
         self._frame.destroy()
 
