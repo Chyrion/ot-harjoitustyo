@@ -19,27 +19,26 @@ class UILoginView:
 
         self._initalize()
 
-    def destroy(self):
-        # For some reason, I can't destroy anything from the window, which makes changing views effectively impossible
+    def pack(self):
+        self._frame.pack(fill=constants.X)
 
-        # for widget in self._frame.winfo_children():
-        #     widget.grid_forget()
-        # self._frame.grid_forget()
-        # self._frame.destroy()
-        return
+    def destroy(self):
+        self._frame.destroy()
 
     def _initalize(self):
         self._frame = ttk.Frame(master=self._root)
 
-        main_label = ttk.Label(master=self._root, text='Select user')
+        main_label = ttk.Label(master=self._frame, text='Select user')
         main_label.grid(row=0, column=0, sticky=constants.E)
         self._initialize_user_list()
 
-        self._new_user_field = ttk.Entry(master=self._root)
+        self._new_user_field = ttk.Entry(master=self._frame)
         self._new_user_field.grid(padx=5, pady=5)
         new_user_button = ttk.Button(
-            master=self._root, text='Create new user', command=self._new_user)
+            master=self._frame, text='Create new user', command=self._new_user)
         new_user_button.grid(padx=5, pady=5)
+
+        self.pack()
 
     def select_user(self, user):
         self._selected_user = user
@@ -49,8 +48,8 @@ class UILoginView:
         """Creates a label + button for each user in the user list"""
 
         for user in self._users:
-            label = ttk.Label(master=self._root, text=user)
-            button = ttk.Button(master=self._root, text='Select',
+            label = ttk.Label(master=self._frame, text=user)
+            button = ttk.Button(master=self._frame, text='Select',
                                 command=lambda: self.select_user(user))
             self._user_labels.append((label, button))
 
