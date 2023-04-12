@@ -4,6 +4,7 @@ Tämä on ohjelmistotekniikan harjoitustyön repositorio. Tämä teksti on suome
 
 [Vaatimusmaarittely](dokumentaatio/vaatimusmaarittely.md)
 [Changelog](dokumentaatio/changelog.md)
+[Tuntikirjanpit](dokumentaatio/tuntikirjanpito.md)
 
 ### Tehtävät
 
