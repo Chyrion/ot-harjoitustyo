@@ -5,7 +5,7 @@ from datamanager.filemanager import FileManager
 class UIUserHomeview:
     """Responsible for creating the home page for a user"""
 
-    def __init__(self, root, username: str, files: FileManager, handle_new_flight):
+    def __init__(self, root, username: str, files: FileManager, handle_new_flight, handle_change_user):
         self._root = root
         self._frame = None
         self._username = username
@@ -14,6 +14,7 @@ class UIUserHomeview:
 
         self._userdata = self._load_data()
         self._handle_new_flight = handle_new_flight
+        self._handle_change_user = handle_change_user
 
         self._initialize()
 
@@ -25,15 +26,25 @@ class UIUserHomeview:
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
-        self._frame.columnconfigure(0, weight=2)
-        self._frame.columnconfigure(1, weight=1)
 
         name_label = ttk.Label(
             master=self._frame, text=self._userdata['username'])
-        name_label.grid(column=0, row=0, padx=5, pady=5)
+        name_label.grid(column=0, row=0)
+
         new_flight_button = ttk.Button(
             master=self._frame, text='New flight', command=self._handle_new_flight)
-        new_flight_button.grid(column=1, row=0, padx=5, pady=5)
+        new_flight_button.grid(column=1, row=0)
+
+        changeuser_button = ttk.Button(
+            master=self._frame, text='Change user', command=self._handle_change_user
+        )
+        changeuser_button.grid(column=2, row=0)
+
+        deleteuser_button = ttk.Button(
+            master=self._frame, text='Delete user', command=self._delete_user
+        )
+        deleteuser_button.grid(column=3, row=0)
+
         self._initialize_flight_log()
 
         self.pack()
@@ -46,17 +57,19 @@ class UIUserHomeview:
             curr_row = 1
             for flight in flights:
                 label_title = ttk.Label(
-                    master=self._frame, text='Flight', font=("Arial", 16)).grid(column=0, row=curr_row)
-                label_start_text = ttk.Label(
-                    master=self._frame, text='Start:').grid(column=0, row=curr_row+1)
-                label_start_location = ttk.Label(
-                    master=self._frame, text=flight['start']).grid(column=1, row=curr_row+1)
+                    master=self._frame, text='Flight', font=("Arial", 16)).grid(column=0, columnspan=4)
 
+                label_start_text = ttk.Label(
+                    master=self._frame, text='Start:').grid(column=0, row=curr_row+1, columnspan=2, sticky=constants.E)
                 label_destination_text = ttk.Label(
-                    master=self._frame, text='Destination: ').grid(column=0, row=curr_row+2)
+                    master=self._frame, text='Destination: ').grid(column=2, row=curr_row+1, columnspan=2, sticky=constants.W)
+
+                label_start_location = ttk.Label(
+                    master=self._frame, text=flight['start']).grid(column=0, row=curr_row+2, columnspan=2, sticky=constants.E)
+
                 label_destination_location = ttk.Label(
-                    master=self._frame, text=flight['destination']).grid(column=1, row=curr_row+2)
-                curr_row += 3
+                    master=self._frame, text=flight['destination']).grid(column=2, row=curr_row+2, columnspan=2, sticky=constants.W)
+                curr_row += 4
 
         else:
             label = ttk.Label(master=self._frame, text='No flights found')
@@ -64,3 +77,7 @@ class UIUserHomeview:
 
     def _load_data(self):
         return self._files.load_user_data(self._username)
+
+    def _delete_user(self):
+        print('delete pressed!')
+        return

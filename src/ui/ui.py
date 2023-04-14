@@ -32,7 +32,7 @@ class UI:
         self._hide_current_view()
 
         self._current_view = UIUserHomeview(
-            self._root, self._selected_user, self._files, self._show_new_flight_view)
+            self._root, self._selected_user, self._files, self._show_new_flight_view, self._show_login_view)
 
     def _show_new_flight_view(self):
         self._hide_current_view()
