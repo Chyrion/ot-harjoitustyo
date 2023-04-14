@@ -15,6 +15,7 @@ class UIUserHomeview:
         self._userdata = self._load_data()
         self._new_flight_start_entry = None
         self._new_flight_dest_entry = None
+        self._new_flight_enter_button = None
 
         self._initialize()
 
@@ -31,17 +32,6 @@ class UIUserHomeview:
             master=self._root, text=self._userdata['username'])
         name_label.pack()
         self._initialize_flight_log()
-        self._new_flight_start_entry = ttk.Entry(
-            master=self._frame)
-        self._new_flight_start_entry.grid(padx=5, pady=2)
-        self._new_flight_dest_entry = ttk.Entry(
-            master=self._frame)
-        self._new_flight_dest_entry.grid(padx=5, pady=2)
-        self._new_flight_enter_button = ttk.Button(
-            master=self._frame, text='Add flight', command=self._new_flight)
-        self._new_flight_enter_button.grid(padx=5, pady=2)
-
-        # self._initialize_new_flight_fields()
 
         self.pack()
 
@@ -64,25 +54,6 @@ class UIUserHomeview:
         else:
             label = ttk.Label(master=self._frame, text='No flights found')
             label.grid(row=1, column=0)
-
-    def _initialize_new_flight_fields(self):
-        """Initializes text fields and button to enter a new flight"""
-
-        self._new_flight_start_entry = ttk.Entry(
-            master=self._frame).grid(padx=5, pady=2)
-        self._new_flight_dest_entry = ttk.Entry(
-            master=self._frame).grid(padx=5, pady=2)
-        self._new_flight_enter_button = ttk.Button(
-            master=self._frame, text='Add flight', command=self._new_flight).grid(padx=5, pady=2)
-
-    def _new_flight(self):
-        print('saving new flight')
-        print(self._new_flight_start_entry)
-        print(self._new_flight_dest_entry)
-        if self._new_flight_dest_entry and self._new_flight_start_entry:
-            start = self._new_flight_start_entry.get()
-            dest = self._new_flight_dest_entry.get()
-            self._files.save_new_flight(self._username, start, dest)
 
     def _load_data(self):
         return self._files.load_user_data(self._username)
