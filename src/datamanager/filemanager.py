@@ -40,7 +40,7 @@ class FileManager:
             os.mkdir(self._data_folder_path + '/' + username)
             self._userlist.append(username)
             userpath = self._data_folder_path + '/' + username
-            with open(userpath+'/'+username+'.json', 'w') as file:
+            with open(userpath+'/'+username+'.json', 'w', encoding='utf8') as file:
                 data = {
                     'username': username,
                     'flights': []
@@ -61,8 +61,7 @@ class FileManager:
             shutil.rmtree(self._data_folder_path + '/' + username)
             self._get_users()
             return True
-        else:
-            return False
+        return False
 
     @property
     def userlist(self):
@@ -72,7 +71,7 @@ class FileManager:
         """Loads user data"""
         if username in self._userlist:
             userfile = self._data_folder_path + f'/{username}/{username}.json'
-            with open(userfile, 'r') as file:
+            with open(userfile, 'r', encoding='utf8') as file:
                 return json.load(file)
         else:
             return False
@@ -88,8 +87,8 @@ class FileManager:
         """Saves a new Flight object into the user's data file"""
         flight = Flight(start, dest)
         userfile = self._data_folder_path + f'/{username}/{username}.json'
-        file = open(userfile, 'r').read()
+        file = open(userfile, 'r', encoding='utf8').read()
         file_json = json.loads(file)
         file_json['flights'].append(flight.to_dict())
-        with open(userfile, 'w') as file:
+        with open(userfile, 'w', encoding='utf8') as file:
             json.dump(file_json, file)
