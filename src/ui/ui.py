@@ -1,5 +1,6 @@
 from ui.ui_login_view import UILoginView
 from ui.ui_user_homeview import UIUserHomeview
+from ui.ui_user_newflight import UIUserNewFlight
 
 
 class UI:
@@ -27,8 +28,14 @@ class UI:
 
     def _show_homepage_view(self):
         if self._current_view is not None:
-            self._selected_user = self._current_view.selected_user()
+            self._selected_user = self._current_view.selected_user
         self._hide_current_view()
 
         self._current_view = UIUserHomeview(
-            self._root, self._selected_user, self._files)
+            self._root, self._selected_user, self._files, self._show_new_flight_view)
+
+    def _show_new_flight_view(self):
+        self._hide_current_view()
+
+        self._current_view = UIUserNewFlight(
+            self._root, self._selected_user, self._files, self._show_homepage_view)

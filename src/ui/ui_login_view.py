@@ -74,5 +74,6 @@ class UILoginView:
             self._initialize_user(new_user_name)
             self._initalize_new_user_field()
 
+    @property
     def selected_user(self):
         return self._selected_user
