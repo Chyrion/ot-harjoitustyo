@@ -17,6 +17,7 @@ class UILoginView:
         self._new_user_button = None
         self._handle_user_select = handle_user_select
         self._selected_user = None
+        self._row = 1
 
         self._initialize()
 
@@ -30,8 +31,8 @@ class UILoginView:
         self._frame = ttk.Frame(master=self._root)
 
         main_label = ttk.Label(master=self._frame, text='Select user')
-        main_label.grid(row=0, column=0, sticky=constants.E)
-        # self._initialize_user_list()
+        main_label.grid(columnspan=2)
+
         for user in self._users:
             self._initialize_user(user)
 
@@ -51,8 +52,9 @@ class UILoginView:
                             command=lambda: self.select_user(user))
         self._user_labels.append((label, button))
 
-        label.grid(padx=5, pady=5)
-        button.grid(padx=5, pady=5)
+        label.grid(column=0, row=self._row, padx=2, pady=2)
+        button.grid(column=1, row=self._row, padx=2, pady=2)
+        self._row += 1
 
     def _initalize_new_user_field(self):
         if self._new_user_field:
@@ -61,10 +63,12 @@ class UILoginView:
             self._new_user_button.destroy()
 
         self._new_user_field = ttk.Entry(master=self._frame)
-        self._new_user_field.grid(padx=5, pady=5, sticky=constants.S)
+        self._new_user_field.grid(
+            column=0, row=self._row, padx=5, pady=5, sticky=constants.S)
         self._new_user_button = ttk.Button(
             master=self._frame, text='Create new user', command=self._new_user)
-        self._new_user_button.grid(padx=5, pady=5, sticky=constants.S)
+        self._new_user_button.grid(
+            column=1, row=self._row, padx=5, pady=5, sticky=constants.S)
 
     def _new_user(self):
         if len(self._new_user_field.get()) > 3:
