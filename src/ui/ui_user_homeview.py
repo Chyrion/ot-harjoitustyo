@@ -5,7 +5,7 @@ from datamanager.filemanager import FileManager
 class UIUserHomeview:
     """Responsible for creating the home page for a user"""
 
-    def __init__(self, root, username: str, files: FileManager):
+    def __init__(self, root, username: str, files: FileManager, handle_new_flight):
         self._root = root
         self._frame = None
         self._username = username
@@ -13,9 +13,7 @@ class UIUserHomeview:
         self._flights = []
 
         self._userdata = self._load_data()
-        self._new_flight_start_entry = None
-        self._new_flight_dest_entry = None
-        self._new_flight_enter_button = None
+        self._handle_new_flight = handle_new_flight
 
         self._initialize()
 
@@ -29,9 +27,12 @@ class UIUserHomeview:
         self._frame = ttk.Frame(master=self._root)
 
         name_label = ttk.Label(
-            master=self._root, text=self._userdata['username'])
-        name_label.pack()
+            master=self._frame, text=self._userdata['username'])
+        name_label.grid(padx=5, pady=5)
         self._initialize_flight_log()
+        new_flight_button = ttk.Button(
+            master=self._frame, text='New flight', command=self._handle_new_flight)
+        new_flight_button.grid(padx=5, pady=5)
 
         self.pack()
 
