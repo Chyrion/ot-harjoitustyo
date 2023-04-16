@@ -7,3 +7,4 @@
 ## Viikko 4
 
 - Siirretty uuden lennon lisääminen omaan näkymään
+- Lennon lisäämisessä voi valita päivämäärän
