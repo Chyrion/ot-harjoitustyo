@@ -83,7 +83,7 @@ class FileManager:
             return True
         return False
 
-    def save_new_flight(self, username: str, start: str, dest: str, date: datetime):
+    def save_new_flight(self, username: str, start: str, dest: str, date: datetime.date):
         """Saves a new Flight object into the user's data file"""
         flight = Flight(start, dest, date)
         userfile = self._data_folder_path + f'/{username}/{username}.json'
