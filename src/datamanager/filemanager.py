@@ -1,6 +1,7 @@
 import os
 import json
 import shutil
+import datetime
 from entities.flight import Flight
 
 
@@ -82,12 +83,12 @@ class FileManager:
             return True
         return False
 
-    def save_new_flight(self, username: str, start: str, dest: str):
+    def save_new_flight(self, username: str, start: str, dest: str, date: datetime):
         """Saves a new Flight object into the user's data file"""
-        flight = Flight(start, dest)
+        flight = Flight(start, dest, date)
         userfile = self._data_folder_path + f'/{username}/{username}.json'
         with open(userfile, 'r', encoding='utf8') as file:
-            file_json = json.loads(file)
+            file_json = json.loads(file.read())
         file_json['flights'].append(flight.to_dict())
         with open(userfile, 'w', encoding='utf8') as file:
             json.dump(file_json, file)
