@@ -2,7 +2,7 @@
 
 Tämä on ohjelmistotekniikan harjoitustyön repositorio. Tämä teksti on suomeksi, mutta dokumentaatio on **englanniksi**.
 
-[Vaatimusmaarittely](dokumentaatio/vaatimusmaarittely.md)   
+[Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)   
 [Changelog](dokumentaatio/changelog.md)   
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)   
 
