@@ -2,19 +2,8 @@
 
 Tämä on ohjelmistotekniikan harjoitustyön repositorio. Tämä teksti on suomeksi, mutta dokumentaatio on **englanniksi**.
 
-[Vaatimusmaarittely](dokumentaatio/vaatimusmaarittely.md)
-[Changelog](dokumentaatio/changelog.md)
-[Tuntikirjanpit](dokumentaatio/tuntikirjanpito.md)
+[Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)   
+[Changelog](dokumentaatio/changelog.md)   
+[Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)   
 
-### Tehtävät
-
----
-
-#### Viikko 1
-
-[komentorivi.txt](laskarit/viikko1/komentorivi.txt)  
-[gitlog.txt](laskarit/viikko1/gitlog.txt)
-
-(muokkaus paikallisella koneella)
-
-epäsynkrooni muutos!
+*Huom. viikolle 4: jouduin yllättäen kiireellisesti matkustamaan toisaalle, ja unohdin pushata tekemiseni kotikoneelta. Tästä syystä tämän viikon palautus on puutteellinen. Teen pushin heti kun siihen saan mahdollisuuden!*
