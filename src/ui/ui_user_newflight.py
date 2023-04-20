@@ -6,7 +6,7 @@ from datamanager.filemanager import FileManager
 class UIUserNewFlight:
     '''Responsible for creating a view for adding new flight log entries'''
 
-    def __init__(self, root, username: str, files: FileManager, return_home):
+    def __init__(self, root, username: str, files: FileManager, return_home, error=None):
         self._root = root
         self._frame = None
         self._username = username
@@ -16,6 +16,8 @@ class UIUserNewFlight:
         self._new_flight_start_entry = None
         self._new_flight_dest_entry = None
         self._new_flight_date_entry = None
+
+        self._error = error
 
         self._initialize()
 
@@ -35,6 +37,12 @@ class UIUserNewFlight:
             master=self._frame, text='New flight', font=('Arial', 16))
         title_label.grid(columnspan=2)
         self._initialize_new_flight_fields()
+
+        if self._error:
+            error_label = ttk.Label(
+                master=self._frame, text='Error: '+self._error)
+            error_label.grid(columnspan=2)
+            error_label.configure(foreground='red')
 
         self.pack()
 
