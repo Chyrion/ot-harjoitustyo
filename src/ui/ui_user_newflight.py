@@ -1,12 +1,12 @@
 from tkinter import ttk, constants
-from tkcalendar import Calendar, DateEntry
+from tkcalendar import DateEntry
 from datamanager.filemanager import FileManager
 
 
 class UIUserNewFlight:
     '''Responsible for creating a view for adding new flight log entries'''
 
-    def __init__(self, root, username: str, files: FileManager, return_home, error=None):
+    def __init__(self, root, username: str, files: FileManager, return_home):
         self._root = root
         self._frame = None
         self._username = username
@@ -15,9 +15,10 @@ class UIUserNewFlight:
 
         self._new_flight_start_entry = None
         self._new_flight_dest_entry = None
+        self._new_flight_duration_entry = None
         self._new_flight_date_entry = None
 
-        self._error = error
+        self._error_label = None
 
         self._initialize()
 
@@ -38,12 +39,6 @@ class UIUserNewFlight:
         title_label.grid(columnspan=2)
         self._initialize_new_flight_fields()
 
-        if self._error:
-            error_label = ttk.Label(
-                master=self._frame, text='Error: '+self._error)
-            error_label.grid(columnspan=2)
-            error_label.configure(foreground='red')
-
         self.pack()
 
     def _initialize_new_flight_fields(self):
@@ -51,10 +46,15 @@ class UIUserNewFlight:
 
         start_label = ttk.Label(master=self._frame, text='Start:')
         start_label.grid(column=0, row=1, sticky=constants.E)
+
         destination_label = ttk.Label(master=self._frame, text='Destination:')
         destination_label.grid(column=0, row=2, sticky=constants.E)
+
+        duration_label = ttk.Label(master=self._frame, text='Duration:')
+        duration_label.grid(column=0, row=3, sticky=constants.E)
+
         date_label = ttk.Label(master=self._frame, text='Date:')
-        date_label.grid(column=0, row=3, sticky=constants.E)
+        date_label.grid(column=0, row=4, sticky=constants.E)
 
         self._new_flight_start_entry = ttk.Entry(master=self._frame)
         self._new_flight_start_entry.grid(column=1, row=1)
@@ -62,20 +62,48 @@ class UIUserNewFlight:
         self._new_flight_dest_entry = ttk.Entry(master=self._frame)
         self._new_flight_dest_entry.grid(column=1, row=2)
 
-        # self._new_flight_date_entry = Calendar(master=self._frame)
+        self._new_flight_duration_entry = ttk.Entry(master=self._frame)
+        self._new_flight_duration_entry.grid(column=1, row=3)
+
         self._new_flight_date_entry = DateEntry(master=self._frame)
-        self._new_flight_date_entry.grid(column=1, row=3)
+        self._new_flight_date_entry.grid(column=1, row=4)
 
         self._new_flight_enter_button = ttk.Button(
             master=self._frame, text='Add flight', command=self._new_flight)
         self._new_flight_enter_button.grid(columnspan=2)
 
+    def _initialize_error(self, error_text: str):
+        '''Initializes an error text if an error is detected in the info entry fields
+
+        args:
+            error_text:
+                The error text that should be displayed
+        '''
+        if self._error_label:
+            self._error_label.destroy()
+        self._error_label = ttk.Label(
+            master=self._frame, text='Error: ' + error_text)
+        self._error_label.grid(columnspan=2)
+        self._error_label.configure(foreground='red')
+
     def _new_flight(self):
-        print('saving new flight')
         if self._new_flight_dest_entry and self._new_flight_start_entry:
             print(self._new_flight_date_entry.get_date())
             start = self._new_flight_start_entry.get()
+            if len(start) != 4:
+                self._initialize_error('Start is of invalid length')
+                return
             dest = self._new_flight_dest_entry.get()
+            if len(dest) != 4:
+                self._initialize_error('Destination is of invalid length')
+                return
+            duration = self._new_flight_duration_entry.get()
+            try:
+                duration = float(duration)
+            except:
+                self._initialize_error('Duration is not a number')
+                return
             date = self._new_flight_date_entry.get_date()
-            self._files.save_new_flight(self._username, start, dest, date)
+            self._files.save_new_flight(
+                self._username, start, dest, duration, date)
             self._return_home()

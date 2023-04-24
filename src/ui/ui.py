@@ -38,4 +38,4 @@ class UI:
         self._hide_current_view()
 
         self._current_view = UIUserNewFlight(
-            self._root, self._selected_user, self._files, self._show_homepage_view, 'Test error')
+            self._root, self._selected_user, self._files, self._show_homepage_view)
