@@ -19,7 +19,7 @@ Sovellukseen voi luoda useamman käyttäjän, joiden tiedot tallentuvat erikseen
 
 - Käyttäjä näkee yhteenvedon omista lennoistaan
 - Käyttäjä voi avata näkymän, josta voi lisätä uuden lennon lokikirjaan
-  - Tietoja: Päiväys, lähtö, loppu, lentokone
+  - Tietoja: Päiväys, lähtö, loppu, kesto, lentokone
     - Pituuden voi merkitä itse, tai se voidaan automaattisesti laskea
 - Käyttäjä voi avata näkymän, jossa voi suunnitella lennon paikasta A paikkaan B
   - Suunnittelija antaa lennon matkallisen pituuden
