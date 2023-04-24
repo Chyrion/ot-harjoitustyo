@@ -1,5 +1,6 @@
 from tkinter import ttk, constants
 from datamanager.filemanager import FileManager
+import datetime
 
 
 class UIUserHomeview:
@@ -56,19 +57,31 @@ class UIUserHomeview:
             flights = self._userdata['flights']
             curr_row = 1
             for flight in flights:
+                flight_date = datetime.datetime.fromisoformat(flight['date'])
                 label_title = ttk.Label(
                     master=self._frame, text='Flight', font=("Arial", 16)).grid(column=0, columnspan=4)
 
+                label_date_text = ttk.Label(master=self._frame, text='Date').grid(
+                    column=0, row=curr_row+1, sticky=constants.N)
                 label_start_text = ttk.Label(
-                    master=self._frame, text='Start:').grid(column=0, row=curr_row+1, columnspan=2, sticky=constants.E)
+                    master=self._frame, text='Start').grid(column=1, row=curr_row+1, sticky=constants.N)
                 label_destination_text = ttk.Label(
-                    master=self._frame, text='Destination: ').grid(column=2, row=curr_row+1, columnspan=2, sticky=constants.W)
+                    master=self._frame, text='Destination').grid(column=2, row=curr_row+1, sticky=constants.N)
+                label_duration_text = ttk.Label(master=self._frame, text='Duration').grid(
+                    column=3, row=curr_row+1, sticky=constants.N)
+
+                label_date = ttk.Label(
+                    master=self._frame, text=f'{flight_date.day} {flight_date.strftime("%B")} {flight_date.year}').grid(column=0, row=curr_row+2, sticky=constants.N)
 
                 label_start_location = ttk.Label(
-                    master=self._frame, text=flight['start']).grid(column=0, row=curr_row+2, columnspan=2, sticky=constants.E)
+                    master=self._frame, text=flight['start']).grid(column=1, row=curr_row+2, sticky=constants.N)
 
                 label_destination_location = ttk.Label(
-                    master=self._frame, text=flight['destination']).grid(column=2, row=curr_row+2, columnspan=2, sticky=constants.W)
+                    master=self._frame, text=flight['destination']).grid(column=2, row=curr_row+2, sticky=constants.N)
+
+                label_duration = ttk.Label(master=self._frame, text=f'{flight["duration"]} h').grid(
+                    column=3, row=curr_row+2, sticky=constants.N)
+
                 curr_row += 4
 
         else:

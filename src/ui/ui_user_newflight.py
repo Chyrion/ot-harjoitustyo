@@ -88,22 +88,26 @@ class UIUserNewFlight:
 
     def _new_flight(self):
         if self._new_flight_dest_entry and self._new_flight_start_entry:
-            print(self._new_flight_date_entry.get_date())
+
             start = self._new_flight_start_entry.get()
             if len(start) != 4:
                 self._initialize_error('Start is of invalid length')
                 return
+
             dest = self._new_flight_dest_entry.get()
             if len(dest) != 4:
                 self._initialize_error('Destination is of invalid length')
                 return
+
             duration = self._new_flight_duration_entry.get()
             try:
                 duration = float(duration)
-            except:
+            except ValueError:
                 self._initialize_error('Duration is not a number')
                 return
+
             date = self._new_flight_date_entry.get_date()
+
             self._files.save_new_flight(
                 self._username, start, dest, duration, date)
             self._return_home()
