@@ -49,7 +49,7 @@ class UIUserNewPlane:
             master=self._frame, text='Year:')
         year_label.grid(column=0, row=2, sticky=constants.E)
 
-        tailnumber_label = ttk.Label(master=self._frame, text='Tailnumber:')
+        tailnumber_label = ttk.Label(master=self._frame, text='Tail number:')
         tailnumber_label.grid(column=0, row=3, sticky=constants.E)
 
         self._model_entry = ttk.Entry(master=self._frame)

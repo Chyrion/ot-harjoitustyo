@@ -62,7 +62,7 @@ class UIUserInfo:
             start_row = 6
             for plane in self._user.planes:
                 tailnumber_label = ttk.Label(
-                    self._frame, text='Tailnumber').grid(row=start_row, column=0)
+                    self._frame, text='Tail number').grid(row=start_row, column=0)
                 tailnumber_text = ttk.Label(self._frame, text=plane['tailnumber']).grid(
                     row=start_row+1, column=0)
 
