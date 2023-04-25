@@ -18,6 +18,10 @@ class UIUserNewFlight:
         self._new_flight_dest_entry = None
         self._new_flight_duration_entry = None
         self._new_flight_date_entry = None
+        self._new_flight_plane_entry = None
+
+        self._plane = None
+        self._planelist = []
 
         self._error_label = None
 
@@ -34,6 +38,8 @@ class UIUserNewFlight:
         return self._user.username
 
     def _initialize(self):
+        for key, val in self._user.planes:
+            self._planelist.append(key)
         self._frame = ttk.Frame(master=self._root)
         title_label = ttk.Label(
             master=self._frame, text='New flight', font=('Arial', 16))
@@ -58,6 +64,9 @@ class UIUserNewFlight:
         date_label = ttk.Label(master=self._frame, text='Date:')
         date_label.grid(column=0, row=4, sticky=constants.E)
 
+        plane_label = ttk.Label(self._frame, text='Plane:').grid(
+            column=0, row=5, sticky=constants.E)
+
         self._new_flight_start_entry = ttk.Entry(master=self._frame)
         self._new_flight_start_entry.grid(column=1, row=1)
 
@@ -69,6 +78,13 @@ class UIUserNewFlight:
 
         self._new_flight_date_entry = DateEntry(master=self._frame)
         self._new_flight_date_entry.grid(column=1, row=4)
+
+        if len(self._planelist) > 0:
+            self._new_flight_plane_entry = ttk.OptionMenu(
+                self._frame, variable=self._plane, default=self._planelist[0], *self._planelist).grid(column=1, row=5)
+        else:
+            self._new_flight_plane_entry = ttk.Label(
+                self._frame, text='No planes available!').grid(column=1, row=5)
 
         self._new_flight_enter_button = ttk.Button(
             master=self._frame, text='Add flight', command=self._new_flight)
@@ -110,6 +126,10 @@ class UIUserNewFlight:
                 return
 
             date = self._new_flight_date_entry.get_date()
+
+            if not self._plane:
+                self._initialize_error('No plane selected!')
+                return
 
             self._files.save_new_flight(
                 self._user, start, dest, duration, date)

@@ -5,7 +5,7 @@ from entities.plane import Plane
 class User:
     '''Class representing a user profile'''
 
-    def __init__(self, username: str, flights: list[Flight] = list(), planes: list = list()):
+    def __init__(self, username: str, flights: list[Flight] = list(), planes: list[Plane] = list()):
         '''Class constructor
 
         args:
