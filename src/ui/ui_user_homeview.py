@@ -6,16 +6,16 @@ import datetime
 class UIUserHomeview:
     """Responsible for creating the home page for a user"""
 
-    def __init__(self, root, username: str, files: FileManager, handle_new_flight, handle_change_user):
+    def __init__(self, root, username: str, files: FileManager, handle_new_flight, handle_change_user, handle_user_info):
         self._root = root
         self._frame = None
         self._username = username
         self._files = files
-        self._flights = []
 
         self._userdata = self._load_data()
         self._handle_new_flight = handle_new_flight
         self._handle_change_user = handle_change_user
+        self._handle_user_info = handle_user_info
 
         self._initialize()
 
@@ -29,22 +29,18 @@ class UIUserHomeview:
         self._frame = ttk.Frame(master=self._root)
 
         name_label = ttk.Label(
-            master=self._frame, text=self._userdata['username'])
-        name_label.grid(column=0, row=0)
+            master=self._frame, text=self._userdata['username']).grid(column=0, row=0)
 
         new_flight_button = ttk.Button(
-            master=self._frame, text='New flight', command=self._handle_new_flight)
-        new_flight_button.grid(column=1, row=0)
+            master=self._frame, text='New flight', command=self._handle_new_flight).grid(column=1, row=0)
+
+        userinfo_button = ttk.Button(
+            master=self._frame, text='User info', command=self._handle_user_info
+        ).grid(column=2, row=0)
 
         changeuser_button = ttk.Button(
             master=self._frame, text='Change user', command=self._handle_change_user
-        )
-        changeuser_button.grid(column=2, row=0)
-
-        deleteuser_button = ttk.Button(
-            master=self._frame, text='Delete user', command=self._delete_user
-        )
-        deleteuser_button.grid(column=3, row=0)
+        ).grid(column=3, row=0)
 
         self._initialize_flight_log()
 
@@ -89,8 +85,4 @@ class UIUserHomeview:
             label.grid(row=1, column=0)
 
     def _load_data(self):
-        return self._files.load_user_data(self._username)
-
-    def _delete_user(self):
-        print('delete pressed!')
-        return
+        return self._files.load_user_data_from_file(self._username)
