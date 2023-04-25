@@ -48,15 +48,15 @@ class FileManager:
             return True
         return False
 
-    def delete_user(self, username):
+    def delete_user(self, user: User):
         """Deletes a user and their user folder
 
         args:
             username:
                 The username of the user to be deleted
         """
-        if username in self._userlist:
-            shutil.rmtree(self._data_folder_path + '/' + username)
+        if user.username in self._userlist:
+            shutil.rmtree(self._data_folder_path + '/' + user.username)
             self._get_users()
             return True
         return False
