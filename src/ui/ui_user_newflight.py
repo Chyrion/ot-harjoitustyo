@@ -1,15 +1,16 @@
 from tkinter import ttk, constants
 from tkcalendar import DateEntry
 from datamanager.filemanager import FileManager
+from entities.user import User
 
 
 class UIUserNewFlight:
     '''Responsible for creating a view for adding new flight log entries'''
 
-    def __init__(self, root, username: str, files: FileManager, return_home):
+    def __init__(self, root, user: User, files: FileManager, return_home):
         self._root = root
         self._frame = None
-        self._username = username
+        self._user = user
         self._files = files
         self._return_home = return_home
 
@@ -30,7 +31,7 @@ class UIUserNewFlight:
 
     @property
     def selected_user(self):
-        return self._username
+        return self._user.username
 
     def _initialize(self):
         self._frame = ttk.Frame(master=self._root)
@@ -111,5 +112,5 @@ class UIUserNewFlight:
             date = self._new_flight_date_entry.get_date()
 
             self._files.save_new_flight(
-                self._username, start, dest, duration, date)
+                self._user.username, start, dest, duration, date)
             self._return_home()

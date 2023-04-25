@@ -1,18 +1,15 @@
 from tkinter import ttk, constants
-from datamanager.filemanager import FileManager
+from entities.user import User
 import datetime
 
 
 class UIUserHomeview:
     """Responsible for creating the home page for a user"""
 
-    def __init__(self, root, username: str, files: FileManager, handle_new_flight, handle_change_user, handle_user_info):
+    def __init__(self, root, user: User, handle_new_flight, handle_change_user, handle_user_info):
         self._root = root
         self._frame = None
-        self._username = username
-        self._files = files
-
-        self._userdata = self._load_data()
+        self._user = user
         self._handle_new_flight = handle_new_flight
         self._handle_change_user = handle_change_user
         self._handle_user_info = handle_user_info
@@ -29,7 +26,7 @@ class UIUserHomeview:
         self._frame = ttk.Frame(master=self._root)
 
         name_label = ttk.Label(
-            master=self._frame, text=self._userdata['username']).grid(column=0, row=0)
+            master=self._frame, text=self._user.username).grid(column=0, row=0)
 
         new_flight_button = ttk.Button(
             master=self._frame, text='New flight', command=self._handle_new_flight).grid(column=1, row=0)
@@ -49,8 +46,8 @@ class UIUserHomeview:
     def _initialize_flight_log(self):
         """Initializes widgets for each flight that the user has saved"""
 
-        if len(self._userdata['flights']) != 0:
-            flights = self._userdata['flights']
+        if len(self._user.flights) != 0:
+            flights = self._user.flights
             curr_row = 1
             for flight in flights:
                 flight_date = datetime.datetime.fromisoformat(flight['date'])
@@ -83,6 +80,3 @@ class UIUserHomeview:
         else:
             label = ttk.Label(master=self._frame, text='No flights found')
             label.grid(row=1, column=0)
-
-    def _load_data(self):
-        return self._files.load_user_data_from_file(self._username)

@@ -43,11 +43,8 @@ class FileManager:
             self._userlist.append(username)
             userpath = self._data_folder_path + '/' + username
             with open(userpath+'/'+username+'.json', 'w', encoding='utf8') as file:
-                data = {
-                    'username': username,
-                    'flights': []
-                }
-                json.dump(data, file)
+                user = User(username)
+                json.dump(user.user_info, file)
             return True
         return False
 
@@ -75,7 +72,7 @@ class FileManager:
             with open(userfile, 'r', encoding='utf8') as file:
                 file_json = json.loads(file.read())
                 user = User(username, file_json['flights'])
-                return user.user_info
+                return user
         else:
             return False
 
