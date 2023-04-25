@@ -3,6 +3,7 @@ import json
 import shutil
 import datetime
 from entities.flight import Flight
+from entities.user import User
 
 
 class FileManager:
@@ -67,16 +68,18 @@ class FileManager:
     def userlist(self):
         return self._userlist
 
-    def load_user_data(self, username):
+    def load_user_data_from_file(self, username: str):
         """Loads user data"""
         if username in self._userlist:
             userfile = self._data_folder_path + f'/{username}/{username}.json'
             with open(userfile, 'r', encoding='utf8') as file:
-                return json.load(file)
+                file_json = json.loads(file.read())
+                user = User(username, file_json['flights'])
+                return user.user_info
         else:
             return False
 
-    def save_user_data(self, username):
+    def save_user_data(self, username: str):
         """Saves user data"""
         if username not in self._userlist:
             self.new_user(username)
@@ -85,10 +88,14 @@ class FileManager:
 
     def save_new_flight(self, username: str, start: str, dest: str, duration: float, date: datetime.date):
         """Saves a new Flight object into the user's data file"""
-        flight = Flight(start, dest, duration, date)
+
         userfile = self._data_folder_path + f'/{username}/{username}.json'
         with open(userfile, 'r', encoding='utf8') as file:
             file_json = json.loads(file.read())
-        file_json['flights'].append(flight.to_dict())
+
+        user = User(username, file_json['flights'])
+        user.add_flight(Flight(start, dest, duration, date))
+
+        user_data = user.user_info
         with open(userfile, 'w', encoding='utf8') as file:
-            json.dump(file_json, file)
+            json.dump(user_data, file)
