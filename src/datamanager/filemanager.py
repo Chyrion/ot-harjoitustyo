@@ -66,7 +66,12 @@ class FileManager:
         return self._userlist
 
     def load_user_data_from_file(self, username: str):
-        """Loads user data"""
+        """Loads user data
+
+        args:
+            username:
+                Username of the user as a string
+        """
         if username in self._userlist:
             userfile = self._data_folder_path + f'/{username}/{username}.json'
             with open(userfile, 'r', encoding='utf8') as file:
@@ -76,23 +81,26 @@ class FileManager:
         else:
             return False
 
-    def save_user_data(self, username: str):
-        """Saves user data"""
-        if username not in self._userlist:
-            self.new_user(username)
-            return True
-        return False
+    def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date):
+        """Saves a new Flight object into the user's data file
 
-    def save_new_flight(self, username: str, start: str, dest: str, duration: float, date: datetime.date):
-        """Saves a new Flight object into the user's data file"""
+        args:
+            user:
+                User object of the user whose flight is being saved
+            start:
+                Start airport ICAO
+            dest:
+                Destination airport ICAO
+            duration:
+                Duration of the flight in hours as a float value
+            date:
+                Date of the flight as a datetime.date object
+        """
 
-        userfile = self._data_folder_path + f'/{username}/{username}.json'
-        with open(userfile, 'r', encoding='utf8') as file:
-            file_json = json.loads(file.read())
+        userfile = self._data_folder_path + \
+            f'/{user.username}/{user.username}.json'
 
-        user = User(username, file_json['flights'])
         user.add_flight(Flight(start, dest, duration, date))
 
-        user_data = user.user_info
         with open(userfile, 'w', encoding='utf8') as file:
-            json.dump(user_data, file)
+            json.dump(user.user_info, file)

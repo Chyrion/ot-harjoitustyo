@@ -112,5 +112,5 @@ class UIUserNewFlight:
             date = self._new_flight_date_entry.get_date()
 
             self._files.save_new_flight(
-                self._user.username, start, dest, duration, date)
+                self._user, start, dest, duration, date)
             self._return_home()
