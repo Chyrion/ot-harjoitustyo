@@ -1,5 +1,6 @@
 .pytest_cache
-__pycache__
-userfiles
-htmlcov
 .vscode
+.coverage
+__pycache__
+htmlcov
+userfiles
