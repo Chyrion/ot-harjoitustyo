@@ -44,9 +44,9 @@ class User:
         self._flights.append(flight)
         self._hours = self._update_hours()
 
-    def add_plane(self, model: str, tailnumber: str):
+    def add_plane(self, model: str, year: int, tailnumber: str):
         '''Adds a plane to the user's planes list'''
-        plane = Plane(model, tailnumber)
+        plane = Plane(model, year, tailnumber)
         self._planes.append(plane.plane_info)
 
     def _update_hours(self):
