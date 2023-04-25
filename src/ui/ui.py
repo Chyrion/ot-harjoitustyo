@@ -1,10 +1,12 @@
 from ui.ui_login_view import UILoginView
 from ui.ui_user_homeview import UIUserHomeview
 from ui.ui_user_newflight import UIUserNewFlight
+from ui.ui_user_info import UIUserInfo
+from datamanager.filemanager import FileManager
 
 
 class UI:
-    def __init__(self, root, users, files):
+    def __init__(self, root, users: list, files: FileManager):
         self._root = root
         self._current_view = None
         self._users = users
@@ -28,14 +30,23 @@ class UI:
 
     def _show_homepage_view(self):
         if self._current_view is not None:
-            self._selected_user = self._current_view.selected_user
+            self._get_selected_user_data(self._current_view.selected_user)
         self._hide_current_view()
 
         self._current_view = UIUserHomeview(
-            self._root, self._selected_user, self._files, self._show_new_flight_view, self._show_login_view)
+            self._root, self._selected_user, self._show_new_flight_view, self._show_login_view, self._show_user_info_view)
 
     def _show_new_flight_view(self):
         self._hide_current_view()
 
         self._current_view = UIUserNewFlight(
             self._root, self._selected_user, self._files, self._show_homepage_view)
+
+    def _show_user_info_view(self):
+        self._hide_current_view()
+
+        self._current_view = UIUserInfo(
+            self._root, self._selected_user, self._show_homepage_view)
+
+    def _get_selected_user_data(self, username: str):
+        self._selected_user = self._files.load_user_data_from_file(username)
