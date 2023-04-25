@@ -1,4 +1,5 @@
 from entities.flight import Flight
+from entities.plane import Plane
 
 
 class User:
@@ -43,10 +44,10 @@ class User:
         self._flights.append(flight)
         self._hours = self._update_hours()
 
-    # TODO
-    def add_plane(self, plane):
+    def add_plane(self, model: str, tailnumber: str):
         '''Adds a plane to the user's planes list'''
-        return
+        plane = Plane(model, tailnumber)
+        self._planes.append(plane.plane_info)
 
     def _update_hours(self):
         hours = 0

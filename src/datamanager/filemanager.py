@@ -4,6 +4,7 @@ import shutil
 import datetime
 from entities.flight import Flight
 from entities.user import User
+from entities.plane import Plane
 
 
 class FileManager:
@@ -81,7 +82,7 @@ class FileManager:
         else:
             return False
 
-    def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date):
+    def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date, plane: Plane):
         """Saves a new Flight object into the user's data file
 
         args:
@@ -100,7 +101,27 @@ class FileManager:
         userfile = self._data_folder_path + \
             f'/{user.username}/{user.username}.json'
 
-        user.add_flight(Flight(start, dest, duration, date))
+        user.add_flight(Flight(start, dest, duration, date), plane)
+
+        with open(userfile, 'w', encoding='utf8') as file:
+            json.dump(user.user_info, file)
+
+    def save_new_plane(self, user: User, model: str, tailnumber: str):
+        '''Saves a new Plane object into the user's data file
+
+        args:
+            user:
+                User's User object
+            model:
+                Model of the plane
+            tailnumber:
+                Tailnumber of the plane
+        '''
+
+        userfile = self._data_folder_path + \
+            f'/{user.username}/{user.username}.json'
+
+        user.add_plane(model, tailnumber)
 
         with open(userfile, 'w', encoding='utf8') as file:
             json.dump(user.user_info, file)

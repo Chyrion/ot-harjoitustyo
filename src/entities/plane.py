@@ -20,3 +20,11 @@ class Plane:
 
     def add_flight_hours(self, hours: float):
         self._hours += hours
+
+    @property
+    def plane_info(self):
+        return {
+            'model': self._model,
+            'tailnumber': self._tailnumber,
+            'hours': self._hours
+        }
