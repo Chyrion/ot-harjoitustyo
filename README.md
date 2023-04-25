@@ -13,7 +13,9 @@ Sovellus on lentosimulaattorin ohessa käytettävä lentolokikirja, sekä myöhe
 Riippuvuuksien asennus:
 ```poetry install```
 
-Ohjelman käynnistys:
+Sovelluksen käynnistys:
 ```poetry run invoke start```
 
+### Huomio sovelluksen toiminnasta
 
+Sovellus tallentaa käyttäjien tiedot tiedostoihin, jotka sijaitsevat sovelluksen kotikansion sisällä olevassa kansiossa ```userfiles```.
