@@ -44,10 +44,11 @@ class UIUserNewFlight:
     def _initialize_new_flight_fields(self):
         """Initializes data entry fields for entering details of a flight"""
 
-        start_label = ttk.Label(master=self._frame, text='Start:')
+        start_label = ttk.Label(master=self._frame, text='Start ICAO:')
         start_label.grid(column=0, row=1, sticky=constants.E)
 
-        destination_label = ttk.Label(master=self._frame, text='Destination:')
+        destination_label = ttk.Label(
+            master=self._frame, text='Destination ICAO:')
         destination_label.grid(column=0, row=2, sticky=constants.E)
 
         duration_label = ttk.Label(master=self._frame, text='Duration:')
@@ -91,12 +92,13 @@ class UIUserNewFlight:
 
             start = self._new_flight_start_entry.get()
             if len(start) != 4:
-                self._initialize_error('Start is of invalid length')
+                self._initialize_error('Start ICAO should be 4 characters')
                 return
 
             dest = self._new_flight_dest_entry.get()
             if len(dest) != 4:
-                self._initialize_error('Destination is of invalid length')
+                self._initialize_error(
+                    'Destination ICAO should be 4 characters')
                 return
 
             duration = self._new_flight_duration_entry.get()
