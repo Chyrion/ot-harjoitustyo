@@ -77,12 +77,13 @@ class FileManager:
             userfile = self._data_folder_path + f'/{username}/{username}.json'
             with open(userfile, 'r', encoding='utf8') as file:
                 file_json = json.loads(file.read())
-                user = User(username, file_json['flights'])
+                user = User(
+                    username, file_json['flights'], file_json['planes'])
                 return user
         else:
             return False
 
-    def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date, plane: Plane):
+    def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date,):
         """Saves a new Flight object into the user's data file
 
         args:
@@ -101,12 +102,12 @@ class FileManager:
         userfile = self._data_folder_path + \
             f'/{user.username}/{user.username}.json'
 
-        user.add_flight(Flight(start, dest, duration, date), plane)
+        user.add_flight(Flight(start, dest, duration, date))
 
         with open(userfile, 'w', encoding='utf8') as file:
             json.dump(user.user_info, file)
 
-    def save_new_plane(self, user: User, model: str, tailnumber: str):
+    def save_new_plane(self, user: User, model: str, year: int, tailnumber: str):
         '''Saves a new Plane object into the user's data file
 
         args:
@@ -121,7 +122,7 @@ class FileManager:
         userfile = self._data_folder_path + \
             f'/{user.username}/{user.username}.json'
 
-        user.add_plane(model, tailnumber)
+        user.add_plane(model, year, tailnumber)
 
         with open(userfile, 'w', encoding='utf8') as file:
             json.dump(user.user_info, file)
