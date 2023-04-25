@@ -1,9 +1,11 @@
 # Projektiin käytetty aika
 
-| Päiväys  | Tunnit | Tehty                                                                             |
-| -------- | ------ | --------------------------------------------------------------------------------- |
-| 02.04.   | 6      | Projektin alustus, TKinterin opettelu, projektin perustoimintojen aloittelu       |
-| 03.04.   | 5      | Sivun vaihto ikkunassa, käyttäjätietojen laajennus, uusien lentojen tallentaminen |
-| 14.04.   | 3      | Ulkoasun parantelua, näkymä uuden lennon lisäämiselle lokiin                      |
-| 16.04.   | 2      | Päivämäärän lisääminen lentolokeihin                                              |
-| Yhteensä | 16     |
+| Päiväys  | Tunnit | Tehty                                                                                              |
+| -------- | ------ | -------------------------------------------------------------------------------------------------- |
+| 02.04.   | 6      | Projektin alustus, TKinterin opettelu, projektin perustoimintojen aloittelu                        |
+| 03.04.   | 5      | Sivun vaihto ikkunassa, käyttäjätietojen laajennus, uusien lentojen tallentaminen                  |
+| 14.04.   | 3      | Ulkoasun parantelua, näkymä uuden lennon lisäämiselle lokiin                                       |
+| 16.04.   | 2      | Päivämäärän lisääminen lentolokeihin                                                               |
+| 24.04.   | 2      | Lennon keston lisääminen, lentolistan tietojen laajentaminen                                       |
+| 25.04.   | 6      | Käyttäjän infonäkymä, lentokoneiden lisääminen käyttäjälle, käyttäjätietojen käsittelyn parantelua |
+| Yhteensä | 24     |

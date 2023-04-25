@@ -8,3 +8,8 @@
 
 - Siirretty uuden lennon lisääminen omaan näkymään
 - Lennon lisäämisessä voi valita päivämäärän
+
+## Viikko 5
+
+- Käyttäjä näkee omat tilastonsa ja lentokoneensa omassa infonäkymässä
+- Käyttäjä voi lisätä lentokoneita itselleen
