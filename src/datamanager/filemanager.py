@@ -83,7 +83,7 @@ class FileManager:
         else:
             return False
 
-    def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date,):
+    def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date, plane: Plane):
         """Saves a new Flight object into the user's data file
 
         args:
@@ -102,7 +102,7 @@ class FileManager:
         userfile = self._data_folder_path + \
             f'/{user.username}/{user.username}.json'
 
-        user.add_flight(Flight(start, dest, duration, date))
+        user.add_flight(Flight(start, dest, duration, date, plane))
 
         with open(userfile, 'w', encoding='utf8') as file:
             json.dump(user.user_info, file)

@@ -5,7 +5,7 @@ from entities.plane import Plane
 class User:
     '''Class representing a user profile'''
 
-    def __init__(self, username: str, flights: list[Flight] = list(), planes: list[Plane] = list()):
+    def __init__(self, username: str, flights: list[Flight] = None, planes: list[Plane] = None):
         '''Class constructor
 
         args:
@@ -13,8 +13,14 @@ class User:
                 The username of the user
         '''
         self._username = username
-        self._flights = flights
-        self._planes = planes
+        if flights is None:
+            self._flights = []
+        else:
+            self._flights = flights
+        if planes is None:
+            self._planes = []
+        else:
+            self._planes = planes
         self._hours = self._update_hours()
 
     @property
@@ -42,6 +48,7 @@ class User:
         '''
         flight = flight.to_dict()
         self._flights.append(flight)
+        flight.plane.add_flight_hours(flight.duration)
         self._hours = self._update_hours()
 
     def add_plane(self, model: str, year: int, tailnumber: str):
