@@ -54,7 +54,7 @@ class User:
         if len(self._flights) > 0:
             for flight in self._flights:
                 hours += flight['duration']
-        return hours
+        return round(hours, 3)
 
     @property
     def user_info(self):
