@@ -81,12 +81,12 @@ class UIUserNewFlight:
         self._new_flight_date_entry = DateEntry(master=self._frame)
         self._new_flight_date_entry.grid(column=1, row=4)
 
-        # OptionMenu is not being nice, so it'll have to wait
-        # if len(self._planelist) > 0:
-        #     self._new_flight_plane_entry = ttk.OptionMenu(
-        #         master=self._frame, variable=entryvar, default=self._planelist[0], *self._planelist).grid(column=1, row=5)
-        self._new_flight_plane_entry = ttk.Label(
-            self._frame, text='Plane selection unavailable').grid(column=1, row=5)
+        if len(self._planelist) > 0:
+            self._new_flight_plane_entry = ttk.OptionMenu(self._frame,
+                                                          entryvar, self._planelist[0], *self._planelist).grid(column=1, row=5)
+        else:
+            self._new_flight_plane_entry = ttk.Label(
+                self._frame, text='Plane selection unavailable').grid(column=1, row=5)
 
         self._new_flight_enter_button = ttk.Button(
             master=self._frame, text='Add flight', command=self._new_flight)
