@@ -20,7 +20,7 @@ class UIUserNewFlight:
         self._new_flight_date_entry = None
         self._new_flight_plane_entry = None
 
-        self.plane_var = StringVar
+        self._selected_plane = None
         self._planelist = []
 
         self._error_label = None
@@ -35,11 +35,11 @@ class UIUserNewFlight:
 
     @property
     def selected_user(self):
-        return self._user.username
+        return self._user
 
     def _initialize(self):
         for plane in self._user.planes:
-            self._planelist.append(plane['tailnumber'])
+            self._planelist.append(plane.tailnumber)
         self._planelist = tuple(self._planelist)
         self._frame = ttk.Frame(master=self._root)
         title_label = ttk.Label(
@@ -47,11 +47,17 @@ class UIUserNewFlight:
         title_label.grid(columnspan=2)
         self._initialize_new_flight_fields()
 
+        return_button = ttk.Button(
+            self._frame, text='Return', command=self._return_home)
+        return_button.grid(column=0, row=6)
+        new_flight_enter_button = ttk.Button(
+            master=self._frame, text='Add flight', command=self._new_flight)
+        new_flight_enter_button.grid(column=1, row=6)
+
         self.pack()
 
     def _initialize_new_flight_fields(self):
         """Initializes data entry fields for entering details of a flight"""
-        entryvar = StringVar()
 
         start_label = ttk.Label(master=self._frame, text='Start ICAO:')
         start_label.grid(column=0, row=1, sticky=constants.E)
@@ -66,8 +72,8 @@ class UIUserNewFlight:
         date_label = ttk.Label(master=self._frame, text='Date:')
         date_label.grid(column=0, row=4, sticky=constants.E)
 
-        plane_label = ttk.Label(self._frame, text='Plane:').grid(
-            column=0, row=5, sticky=constants.E)
+        plane_label = ttk.Label(self._frame, text='Plane:')
+        plane_label.grid(column=0, row=5, sticky=constants.E)
 
         self._new_flight_start_entry = ttk.Entry(master=self._frame)
         self._new_flight_start_entry.grid(column=1, row=1)
@@ -81,16 +87,16 @@ class UIUserNewFlight:
         self._new_flight_date_entry = DateEntry(master=self._frame)
         self._new_flight_date_entry.grid(column=1, row=4)
 
+        self._selected_plane = StringVar(self._frame, None, None)
+
         if len(self._planelist) > 0:
             self._new_flight_plane_entry = ttk.OptionMenu(self._frame,
-                                                          entryvar, self._planelist[0], *self._planelist).grid(column=1, row=5)
+                                                          self._selected_plane, self._planelist[0], *self._planelist)
         else:
             self._new_flight_plane_entry = ttk.Label(
-                self._frame, text='Plane selection unavailable').grid(column=1, row=5)
+                self._frame, text='Plane selection unavailable')
 
-        self._new_flight_enter_button = ttk.Button(
-            master=self._frame, text='Add flight', command=self._new_flight)
-        self._new_flight_enter_button.grid(columnspan=2)
+        self._new_flight_plane_entry.grid(column=1, row=5)
 
     def _initialize_error(self, error_text: str):
         '''Initializes an error text if an error is detected in the info entry fields
@@ -129,10 +135,15 @@ class UIUserNewFlight:
 
             date = self._new_flight_date_entry.get_date()
 
-            # if not self._plane:
-            #     self._initialize_error('No plane selected!')
-            #     return
+            if not self._selected_plane.get():
+                self._initialize_error('No plane selected!')
+                return
+
+            plane_tailnumber = self._selected_plane.get()
+            for user_plane in self._user.planes:
+                if user_plane.tailnumber == plane_tailnumber:
+                    plane = user_plane
 
             self._files.save_new_flight(
-                self._user, start, dest, duration, date)
+                self._user, start, dest, duration, date, plane)
             self._return_home()

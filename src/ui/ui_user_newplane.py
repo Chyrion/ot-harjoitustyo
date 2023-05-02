@@ -18,6 +18,8 @@ class UIUserNewPlane:
         self._year_entry = None
         self._tailnumber_entry = None
 
+        self._error_label = None
+
         self._initialize()
 
     def pack(self):
@@ -33,9 +35,17 @@ class UIUserNewPlane:
     def _initialize(self):
         self._frame = ttk.Frame(self._root)
         title_label = ttk.Label(self._frame, text='New plane', font=(
-            'Arial', 16)).grid(row=0, column=0, columnspan=2)
+            'Arial', 16))
+        title_label.grid(row=0, column=0, columnspan=2)
 
         self._initialize_new_plane_fields()
+
+        return_button = ttk.Button(
+            self._frame, text='Return', command=self._return_home)
+        return_button.grid(column=0, row=4)
+        self._new_plane_enter_button = ttk.Button(
+            master=self._frame, text='Add plane', command=self._new_plane)
+        self._new_plane_enter_button.grid(column=1, row=4)
 
         self.pack()
 
@@ -60,10 +70,6 @@ class UIUserNewPlane:
 
         self._tailnumber_entry = ttk.Entry(master=self._frame)
         self._tailnumber_entry.grid(column=1, row=3)
-
-        self._new_plane_enter_button = ttk.Button(
-            master=self._frame, text='Add plane', command=self._new_plane)
-        self._new_plane_enter_button.grid(columnspan=2)
 
     def _initialize_error(self, error_text: str):
         '''Initializes an error text if an error is detected in the info entry fields
