@@ -5,7 +5,7 @@ from entities.plane import Plane
 class Flight:
     """Class representing a flight log entry"""
 
-    def __init__(self, start: str, destination: str, duration: float, date: datetime.date, plane: Plane):
+    def __init__(self, start: str, destination: str, duration: float, date: datetime.date, plane: Plane, flight_id: int):
         """Class constructor
 
         args:
@@ -25,8 +25,9 @@ class Flight:
         self._start = start
         self._destination = destination
         self._duration = duration
-        self._date = date
+        self._flight_date = date
         self._plane = plane
+        self._flight_id = flight_id
 
     @property
     def start(self):
@@ -37,8 +38,8 @@ class Flight:
         return self._destination
 
     @property
-    def date(self):
-        return self._date
+    def flight_date(self):
+        return self._flight_date
 
     @property
     def duration(self):
@@ -48,6 +49,17 @@ class Flight:
     def plane(self):
         return self._plane
 
+    @property
+    def flight_id(self):
+        return self._flight_id
+
     def to_dict(self):
         """Returns a dict with the start and destination"""
-        return {'start': self._start, 'destination': self._destination, 'duration': self._duration, 'date': self._date.isoformat(), 'plane': self._plane.tailnumber}
+        return {
+            'flight_id': self.flight_id,
+            'start': self._start,
+            'destination': self._destination,
+            'duration': self._duration,
+            'date': self._flight_date.isoformat(),
+            'plane': self._plane.tailnumber
+        }

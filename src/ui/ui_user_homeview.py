@@ -50,7 +50,8 @@ class UIUserHomeview:
             flights = self._user.flights
             curr_row = 1
             for flight in flights:
-                flight_date = datetime.datetime.fromisoformat(flight['date'])
+                flight_date = datetime.datetime.fromisoformat(
+                    str(flight.flight_date))
                 label_title = ttk.Label(
                     master=self._frame, text='Flight', font=("Arial", 16)).grid(column=0, columnspan=4)
 
@@ -67,12 +68,12 @@ class UIUserHomeview:
                     master=self._frame, text=f'{flight_date.day} {flight_date.strftime("%B")} {flight_date.year}').grid(column=0, row=curr_row+2, sticky=constants.N)
 
                 label_start_location = ttk.Label(
-                    master=self._frame, text=flight['start']).grid(column=1, row=curr_row+2, sticky=constants.N)
+                    master=self._frame, text=flight.start).grid(column=1, row=curr_row+2, sticky=constants.N)
 
                 label_destination_location = ttk.Label(
-                    master=self._frame, text=flight['destination']).grid(column=2, row=curr_row+2, sticky=constants.N)
+                    master=self._frame, text=flight.destination).grid(column=2, row=curr_row+2, sticky=constants.N)
 
-                label_duration = ttk.Label(master=self._frame, text=f'{flight["duration"]} h').grid(
+                label_duration = ttk.Label(master=self._frame, text=f'{flight.duration} h').grid(
                     column=3, row=curr_row+2, sticky=constants.N)
 
                 curr_row += 4

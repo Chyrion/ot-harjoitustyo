@@ -31,7 +31,12 @@ class UI:
 
     def _show_homepage_view(self):
         if self._current_view is not None:
-            self._get_selected_user_data(self._current_view.selected_user)
+            if isinstance(self._current_view.selected_user, str):
+                self._get_selected_user_data(
+                    self._current_view.selected_user)
+            else:
+                self._get_selected_user_data(
+                    self._current_view.selected_user.username)
         self._hide_current_view()
 
         self._current_view = UIUserHomeview(

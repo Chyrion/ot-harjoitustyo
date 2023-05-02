@@ -22,7 +22,7 @@ class UIUserInfo:
 
     @property
     def selected_user(self):
-        return self._user.username
+        return self._user
 
     def _initialize(self):
         self._frame = ttk.Frame(self._root)
@@ -63,22 +63,22 @@ class UIUserInfo:
             for plane in self._user.planes:
                 tailnumber_label = ttk.Label(
                     self._frame, text='Tail number').grid(row=start_row, column=0)
-                tailnumber_text = ttk.Label(self._frame, text=plane['tailnumber']).grid(
+                tailnumber_text = ttk.Label(self._frame, text=plane.tailnumber).grid(
                     row=start_row+1, column=0)
 
                 model_label = ttk.Label(self._frame, text='Model').grid(
                     row=start_row, column=1)
-                model_text = ttk.Label(self._frame, text=plane['model']).grid(
+                model_text = ttk.Label(self._frame, text=plane.model).grid(
                     row=start_row+1, column=1)
 
                 year_label = ttk.Label(self._frame, text='Year').grid(
                     row=start_row, column=2)
-                year_text = ttk.Label(self._frame, text=plane['year']).grid(
+                year_text = ttk.Label(self._frame, text=plane.year).grid(
                     row=start_row+1, column=2)
 
                 hours_label = ttk.Label(self._frame, text='Hours').grid(
                     row=start_row, column=3)
-                hours_text = ttk.Label(self._frame, text=plane['hours']).grid(
+                hours_text = ttk.Label(self._frame, text=plane.hours).grid(
                     row=start_row+1, column=3)
 
                 start_row += 2
