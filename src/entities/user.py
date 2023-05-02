@@ -106,3 +106,23 @@ class User:
 
     def add_flightplan(self, flightplan: FlightPlan):
         self._flightplans.append(flightplan)
+
+    def sort_flights(self, selected_sorting):
+        if selected_sorting == 'Added':
+            self._flights = sorted(
+                self._flights, key=lambda flight: flight.flight_id)
+        elif selected_sorting == 'Start':
+            self._flights = sorted(
+                self._flights, key=lambda flight: flight.start)
+        elif selected_sorting == 'Destination':
+            self._flights = sorted(
+                self._flights, key=lambda flight: flight.destination)
+        elif selected_sorting == 'Date':
+            self._flights = sorted(
+                self._flights, key=lambda flight: flight.flight_date)
+        elif selected_sorting == 'Duration':
+            self._flights = sorted(
+                self._flights, key=lambda flight: flight.duration)
+        elif selected_sorting == 'Plane':
+            self._flights = sorted(
+                self._flights, key=lambda flight: flight.plane.tailnumber)

@@ -1,5 +1,5 @@
 import datetime
-from tkinter import ttk, constants
+from tkinter import ttk, constants, StringVar
 from entities.user import User
 
 
@@ -15,7 +15,11 @@ class UIUserHomeview:
         self._handle_user_info = handle_user_info
         self._handle_new_flightplan = handle_new_flightplan
 
-        self._curr_row = 1
+        self._sorting_options = (
+            'Added', 'Start', 'Destination', 'Date', 'Duration', 'Plane')
+        self._selected_sorting = None
+
+        self._curr_row = 2
 
         self._initialize()
 
@@ -44,6 +48,14 @@ class UIUserHomeview:
         changeuser_button = ttk.Button(
             master=self._frame, text='Change user', command=self._handle_change_user
         ).grid(column=4, row=0)
+
+        if len(self._user.flights) != 0:
+            self._selected_sorting = StringVar(self._frame, None, None)
+            self._sorting_options_menu = ttk.OptionMenu(
+                self._frame, self._selected_sorting, self._sorting_options[0], *self._sorting_options, command=self._sort_flights)
+            self._sorting_options_menu.grid(row=1, column=1)
+            sorting_label = ttk.Label(self._frame, text='Sorting:')
+            sorting_label.grid(row=1, column=0)
 
         self._initialize_flight_log()
         self._initialize_flightplans()
@@ -95,7 +107,7 @@ class UIUserHomeview:
 
         else:
             label = ttk.Label(master=self._frame, text='No flights found')
-            label.grid(row=1, column=0)
+            label.grid(column=0)
 
     def _initialize_flightplans(self):
         if len(self._user.flightplans) != 0:
@@ -123,3 +135,8 @@ class UIUserHomeview:
         else:
             label = ttk.Label(self._frame, text='No flight plans found')
             label.grid(column=0)
+
+    def _sort_flights(self, *args):
+        self._user.sort_flights(self._selected_sorting.get())
+        self.destroy()
+        self._initialize()
