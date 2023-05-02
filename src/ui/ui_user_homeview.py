@@ -1,23 +1,24 @@
+import datetime
 from tkinter import ttk, constants
 from entities.user import User
-import datetime
 
 
 class UIUserHomeview:
     """Responsible for creating the home page for a user"""
 
-    def __init__(self, root, user: User, handle_new_flight, handle_change_user, handle_user_info):
+    def __init__(self, root, user: User, handle_new_flight, handle_change_user, handle_user_info, handle_new_flightplan):
         self._root = root
         self._frame = None
         self._user = user
         self._handle_new_flight = handle_new_flight
         self._handle_change_user = handle_change_user
         self._handle_user_info = handle_user_info
+        self._handle_new_flightplan = handle_new_flightplan
 
         self._initialize()
 
     def pack(self):
-        self._frame.pack(fill=constants.X)
+        self._frame.grid(sticky=constants.NSEW)
 
     def destroy(self):
         self._frame.destroy()
@@ -31,13 +32,16 @@ class UIUserHomeview:
         new_flight_button = ttk.Button(
             master=self._frame, text='New flight', command=self._handle_new_flight).grid(column=1, row=0)
 
+        new_flightplan_button = ttk.Button(
+            self._frame, text='New flight plan', command=self._handle_new_flightplan).grid(column=2, row=0)
+
         userinfo_button = ttk.Button(
             master=self._frame, text='User info', command=self._handle_user_info
-        ).grid(column=2, row=0)
+        ).grid(column=3, row=0)
 
         changeuser_button = ttk.Button(
             master=self._frame, text='Change user', command=self._handle_change_user
-        ).grid(column=3, row=0)
+        ).grid(column=4, row=0)
 
         self._initialize_flight_log()
 
