@@ -12,3 +12,6 @@ class FlightPlan:
     @property
     def destination(self):
         return self._destination
+
+    def text_representation(self):
+        return f'{self.start}-{self.destination}'
