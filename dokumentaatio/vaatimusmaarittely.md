@@ -12,7 +12,7 @@ Sovellukseen voi luoda useamman käyttäjän, joiden tiedot tallentuvat erikseen
 
 - Kirjautuessa voi valita käyttäjän, jota haluaa käyttää (tehty)
 - Käyttäjillä uniikit käyttäjänimet (tehty)
-- Käyttäjillä ei aluksi tule olemaan salasanaa
+- Käyttäjillä ei aluksi tule olemaan salasanaa (tehty)
   - Mikäli aika sen suo, salasanat voidaan lisätä
 
 #### Kirjautumisen jälkeen
@@ -21,16 +21,16 @@ Sovellukseen voi luoda useamman käyttäjän, joiden tiedot tallentuvat erikseen
 - Käyttäjä voi avata näkymän, josta voi lisätä uuden lennon lokikirjaan (tehty)
   - Tietoja: Päiväys, lähtö, loppu, kesto, lentokone (tehty)
     - Pituuden voi merkitä itse, tai se voidaan automaattisesti laskea
-- Käyttäjä voi avata näkymän, jossa voi suunnitella lennon paikasta A paikkaan B
+- Käyttäjä voi avata näkymän, jossa voi suunnitella lennon paikasta A paikkaan B (tehty)
   - Suunnittelija antaa lennon matkallisen pituuden
-  - Lennon voi tallentaa pohjana, jota voi käyttää lokikirjaan lisäämisessä
+  - Lennon voi tallentaa pohjana, jota voi käyttää lokikirjaan lisäämisessä (tehty)
 - Käyttäjä voi kirjautua ulos tai vaihtaa käyttäjää milloin tahansa (tehty)
 
 ## Jatkoideoita
 
 - Salasanat
 - Näkymässä voi erotella yleisilmailun (pienkoneet) ja lentoyhtiölennot (matkustajakoneet) lennot
-- Lokikirjan järjestely eri kriteereillä: pituus, päiväys, lentokone, lähtö, loppu
+- Lokikirjan järjestely eri kriteereillä: pituus, päiväys, lentokone, lähtö, loppu (tehty)
 - Lennon suunnittelussa voi lisätä välietappeja
   - Mikäli sopiva API tai muu tietokanta löytyy, voi lentoihin lisätä muitakin kohteita kuin lentokenttiä (esim. VOR)
 - Käyttäjät voivat jakaa omia lentosuunnitelmiaan toisille käyttäjille

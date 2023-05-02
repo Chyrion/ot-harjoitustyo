@@ -13,3 +13,10 @@
 
 - Käyttäjä näkee omat tilastonsa ja lentokoneensa omassa infonäkymässä
 - Käyttäjä voi lisätä lentokoneita itselleen
+
+# Viikko 6
+
+- Lennot lisäävät valitulle lentokoneelle tunteja
+- Käyttäjä voi luoda lentosuunnitelman tulevaisuutta varten
+- Lentosuunnitelmia voi käyttää lokikirjaan lisäämisessä
+- Lentolokin voi järjestellä eri kriteereiden mukaan
