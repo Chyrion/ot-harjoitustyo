@@ -1,7 +1,7 @@
 import os
-import json
 import shutil
 import datetime
+import pickle
 from entities.flight import Flight
 from entities.user import User
 from entities.plane import Plane
@@ -43,9 +43,9 @@ class FileManager:
             os.mkdir(self._data_folder_path + '/' + username)
             self._userlist.append(username)
             userpath = self._data_folder_path + '/' + username
-            with open(userpath+'/'+username+'.json', 'w', encoding='utf8') as file:
+            with open(userpath+'/'+username+'.pkl', 'wb') as file:
                 user = User(username)
-                json.dump(user.user_info, file)
+                pickle.dump(user, file, protocol=pickle.HIGHEST_PROTOCOL)
             return True
         return False
 
@@ -73,12 +73,11 @@ class FileManager:
             username:
                 Username of the user as a string
         """
+
         if username in self._userlist:
-            userfile = self._data_folder_path + f'{username}/{username}.json'
-            with open(userfile, 'r', encoding='utf8') as file:
-                file_json = json.loads(file.read())
-                user = User(
-                    username, file_json['flights'], file_json['planes'])
+            userfile = self._data_folder_path + f'{username}/{username}.pkl'
+            with open(userfile, 'rb') as file:
+                user: User = pickle.load(file)
                 return user
         else:
             return False
@@ -100,12 +99,12 @@ class FileManager:
         """
 
         userfile = self._data_folder_path + \
-            f'/{user.username}/{user.username}.json'
+            f'/{user.username}/{user.username}.pkl'
 
-        user.add_flight(Flight(start, dest, duration, date, plane))
-
-        with open(userfile, 'w', encoding='utf8') as file:
-            json.dump(user.user_info, file)
+        user.add_flight(Flight(start, dest, duration,
+                        date, plane, len(user.flights)))
+        with open(userfile, 'wb') as file:
+            pickle.dump(user, file, protocol=pickle.HIGHEST_PROTOCOL)
 
     def save_new_plane(self, user: User, model: str, year: int, tailnumber: str):
         '''Saves a new Plane object into the user's data file
@@ -120,9 +119,9 @@ class FileManager:
         '''
 
         userfile = self._data_folder_path + \
-            f'/{user.username}/{user.username}.json'
+            f'/{user.username}/{user.username}.pkl'
 
         user.add_plane(model, year, tailnumber)
 
-        with open(userfile, 'w', encoding='utf8') as file:
-            json.dump(user.user_info, file)
+        with open(userfile, 'wb') as file:
+            pickle.dump(user, file, protocol=pickle.HIGHEST_PROTOCOL)
