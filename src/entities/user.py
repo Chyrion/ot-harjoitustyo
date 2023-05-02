@@ -1,11 +1,12 @@
 from entities.flight import Flight
 from entities.plane import Plane
+from entities.flightplan import FlightPlan
 
 
 class User:
     '''Class representing a user profile'''
 
-    def __init__(self, username: str, flights: list[Flight] = None, planes: list[Plane] = None):
+    def __init__(self, username: str, flights: list[Flight] = None, planes: list[Plane] = None, flightplans: list[FlightPlan] = None):
         '''Class constructor
 
         args:
@@ -24,6 +25,11 @@ class User:
         else:
             self._planes = planes
 
+        if flightplans is None:
+            self._flightplans = []
+        else:
+            self._flightplans = flightplans
+
         self._hours = self._update_hours()
 
     @property
@@ -37,6 +43,10 @@ class User:
     @property
     def planes(self):
         return self._planes
+
+    @property
+    def flightplans(self):
+        return self._flightplans
 
     @property
     def hours(self):
@@ -94,12 +104,5 @@ class User:
                 hours += flight.duration
         return round(hours, 3)
 
-    @property
-    def user_info(self):
-        '''Returns a dictionary with the user's information'''
-        return {
-            'username': self._username,
-            'hours': self._hours,
-            'flights': self._flights,
-            'planes': self._planes
-        }
+    def add_flightplan(self, flightplan: FlightPlan):
+        self._flightplans.append(flightplan)

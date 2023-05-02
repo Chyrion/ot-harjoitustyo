@@ -3,6 +3,7 @@ import shutil
 import datetime
 import pickle
 from entities.flight import Flight
+from entities.flightplan import FlightPlan
 from entities.user import User
 from entities.plane import Plane
 
@@ -82,8 +83,15 @@ class FileManager:
         else:
             return False
 
+    def _save_user_data_to_file(self, user: User):
+        '''Saves user data into file'''
+        userfile = self._data_folder_path + \
+            f'/{user.username}/{user.username}.pkl'
+        with open(userfile, 'wb') as file:
+            pickle.dump(user, file, protocol=pickle.HIGHEST_PROTOCOL)
+
     def save_new_flight(self, user: User, start: str, dest: str, duration: float, date: datetime.date, plane: Plane):
-        """Saves a new Flight object into the user's data file
+        """Saves a new Flight object into the user's User object
 
         args:
             user:
@@ -98,16 +106,12 @@ class FileManager:
                 Date of the flight as a datetime.date object
         """
 
-        userfile = self._data_folder_path + \
-            f'/{user.username}/{user.username}.pkl'
-
         user.add_flight(Flight(start, dest, duration,
                         date, plane, len(user.flights)))
-        with open(userfile, 'wb') as file:
-            pickle.dump(user, file, protocol=pickle.HIGHEST_PROTOCOL)
+        self._save_user_data_to_file(user)
 
     def save_new_plane(self, user: User, model: str, year: int, tailnumber: str):
-        '''Saves a new Plane object into the user's data file
+        '''Saves a new Plane object into the user's User object
 
         args:
             user:
@@ -118,10 +122,20 @@ class FileManager:
                 Tailnumber of the plane
         '''
 
-        userfile = self._data_folder_path + \
-            f'/{user.username}/{user.username}.pkl'
-
         user.add_plane(model, year, tailnumber)
 
-        with open(userfile, 'wb') as file:
-            pickle.dump(user, file, protocol=pickle.HIGHEST_PROTOCOL)
+        self._save_user_data_to_file(user)
+
+    def save_new_flightplan(self, user: User, start: str, destination: str):
+        """Saves a new FlightPlan object into the user's User object
+
+        args:
+            user (User):
+                The user's User object
+            start (str):
+                The start ICAO
+            destination (str):
+                The destination ICAO
+        """
+        user.add_flightplan(FlightPlan(start, destination))
+        self._save_user_data_to_file(user)
