@@ -74,7 +74,7 @@ class FileManager:
                 Username of the user as a string
         """
         if username in self._userlist:
-            userfile = self._data_folder_path + f'/{username}/{username}.json'
+            userfile = self._data_folder_path + f'{username}/{username}.json'
             with open(userfile, 'r', encoding='utf8') as file:
                 file_json = json.loads(file.read())
                 user = User(

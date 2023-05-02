@@ -13,14 +13,17 @@ class User:
                 The username of the user
         '''
         self._username = username
+
         if flights is None:
             self._flights = []
         else:
             self._flights = flights
+
         if planes is None:
             self._planes = []
         else:
             self._planes = planes
+
         self._hours = self._update_hours()
 
     @property
