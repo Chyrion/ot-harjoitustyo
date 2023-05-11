@@ -1,21 +1,12 @@
 # Ohjelmistotekniikan harjoitustyö
 
-Sovellus on lentosimulaattorin ohessa käytettävä lentolokikirja, sekä myöhemmin myös lentosuunnittelutyökalu.
+Sovellus on lentosimulaattorin ohessa käytettävä lentolokikirja, sekä alkeellinen lentosuunnittelutyökalu. Sovelluksessa käyttäjät voivat lisätä simulaattorissa lennettyjä lentoja omaan lokikirjaan, ja sovellus tarjoaa yhteenvedon kaikista lennetyistä lennoista.
 
 ## Dokumentaatio
 
 [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)  
 [Changelog](dokumentaatio/changelog.md)  
 [Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
+[Käyttohje](dokumentaatio/kayttoohje.md)
 
-## Käyttöönotto
 
-Riippuvuuksien asennus:
-```poetry install```
-
-Sovelluksen käynnistys:
-```poetry run invoke start```
-
-### Huomio sovelluksen toiminnasta
-
-Sovellus tallentaa käyttäjien tiedot tiedostoihin, jotka sijaitsevat sovelluksen kotikansion sisällä olevassa kansiossa ```userfiles```.
