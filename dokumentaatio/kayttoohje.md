@@ -1,6 +1,13 @@
 # Ohjeita käyttöön
 
-## Näkymät
+## Käyttö
+
+### Käyttäjävalinta
+
+Sovelluksen käynnistyessä aukeaa käyttäjävalinta.
+
+[kuvat/home.png]
+
 - Kotinäkymä: Näyttää omat lennot (jos niitä on) ja niiden tiedot, sekä sisältää navigaation infonäkymään, uuden lennon lisäämiseen, tai käyttäjän vaihtoon
 - Uusi lento:
   - Start ICAO/Destination ICAO: kentät vaativat 4-kirjaimisen ICAO koodin - tämä voi olla tässä vaiheessa käytännössä mikä tahansa yhdistelmä merkkejä, mutta esimerkkejä oikeista ICAO koodeista ovat: EFHK, EFLA, EGLL, LFPG, KJFK, KLAX, RJAA
