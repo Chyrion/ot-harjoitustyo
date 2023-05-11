@@ -12,6 +12,11 @@ poetry install
 poetry run invoke start
 ```
 
+### Huomio sovelluksen toiminnasta
+
+Sovellus tallentaa käyttäjien tiedot tiedostoihin, jotka sijaitsevat sovelluksen kotikansion sisällä olevassa kansiossa ```userfiles```. Varmista siis, että sovellus on sijainnissa, jossa se pystyy luomaan ja lukemaan tiedostoja.
+
+
 # Käyttö
 
 ## Käyttäjävalinta
@@ -22,7 +27,7 @@ Sovelluksen käynnistyessä aukeaa käyttäjävalinta. Uusia käyttäjiä voi lu
 
 ## Kotinäkymä
 
-Kotinäkymä näyttää käyttäjän omat lennot (mikäli niitä on) ja niiden tiedot, sekä tallennetut lentosuunnitelmat. Yläreuna sisältää navigaation [infonäkymään](#infonäkymä), [uuden lennon lisäämiseen](#uusi-lento), uuden lentosuunnitelman lisäämiseen sekä käyttäjän vaihtoon.
+Kotinäkymä näyttää käyttäjän omat lennot (mikäli niitä on) ja niiden tiedot, sekä tallennetut lentosuunnitelmat. Yläreuna sisältää navigaation [infonäkymään](#infonäkymä), [uuden lennon lisäämiseen](#uusi-lento), [uuden lentosuunnitelman lisäämiseen](#uusi-lentosuunnitelma) sekä käyttäjän vaihtoon.
 
 ![](./kuvat/home.png)
 
