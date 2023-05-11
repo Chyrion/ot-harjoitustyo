@@ -12,6 +12,11 @@ poetry install
 poetry run invoke start
 ```
 
+### Huomio sovelluksen toiminnasta
+
+Sovellus tallentaa käyttäjien tiedot tiedostoihin, jotka sijaitsevat sovelluksen kotikansion sisällä olevassa kansiossa ```userfiles```. Varmista siis, että sovellus on sijainnissa, jossa se pystyy luomaan ja lukemaan tiedostoja.
+
+
 # Käyttö
 
 ## Käyttäjävalinta
