@@ -27,7 +27,7 @@ Sovelluksen käynnistyessä aukeaa käyttäjävalinta. Uusia käyttäjiä voi lu
 
 ## Kotinäkymä
 
-Kotinäkymä näyttää käyttäjän omat lennot (mikäli niitä on) ja niiden tiedot, sekä tallennetut lentosuunnitelmat. Yläreuna sisältää navigaation [infonäkymään](#infonäkymä), [uuden lennon lisäämiseen](#uusi-lento), uuden lentosuunnitelman lisäämiseen sekä käyttäjän vaihtoon.
+Kotinäkymä näyttää käyttäjän omat lennot (mikäli niitä on) ja niiden tiedot, sekä tallennetut lentosuunnitelmat. Yläreuna sisältää navigaation [infonäkymään](#infonäkymä), [uuden lennon lisäämiseen](#uusi-lento), [uuden lentosuunnitelman lisäämiseen](#uusi-lentosuunnitelma) sekä käyttäjän vaihtoon.
 
 ![](./kuvat/home.png)
 
