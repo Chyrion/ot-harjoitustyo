@@ -4,9 +4,27 @@
 
 ### Käyttäjävalinta
 
-Sovelluksen käynnistyessä aukeaa käyttäjävalinta.
+Sovelluksen käynnistyessä aukeaa käyttäjävalinta. Uusia käyttäjiä voi luoda alareunan tekstikentän avulla.
 
-[kuvat/home.png]
+![](./kuvat/userselect.png)
+
+### Kotinäkymä
+
+Kotinäkymä näyttää käyttäjän omat lennot (mikäli niitä on) ja niiden tiedot, sekä tallennetut lentosuunnitelmat. Yläreuna sisältää navigaation infonäkymään, uuden lennon lisäämiseen, uuden lentosuunnitelman lisäämiseen sekä käyttäjän vaihtoon.
+
+![](./kuvat/home.png)
+
+### Infonäkymä
+
+Infonäkymässä on kooste käyttäjän tilastoista sekä lista lisätyistä lentokoneista. Yläreunasta käyttäjä voi siirtyä lisäämään uuden lentokoneen itselleen.
+
+![](./kuvat/userinfo.png)
+
+### Uusi lentokone
+
+Näkymän avulla voi lisätä käyttäjälle uuden lentokoneen.
+
+Kentät:
 
 - Kotinäkymä: Näyttää omat lennot (jos niitä on) ja niiden tiedot, sekä sisältää navigaation infonäkymään, uuden lennon lisäämiseen, tai käyttäjän vaihtoon
 - Uusi lento:
