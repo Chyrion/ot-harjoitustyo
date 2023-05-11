@@ -5,6 +5,18 @@ from entities.user import User
 class UIUserInfo:
 
     def __init__(self, root, user: User, handle_show_homepage, handle_new_plane):
+        """Class constructor
+
+        args:
+            root:
+                TKinter object that the view is contained in
+            user:
+                The selected user's User object
+            handle_show_homepage:
+                Method responsible for creating the user's home view
+            handle_new_plane:
+                Method responsible for creating the new plane view
+        """
         self._root = root
         self._frame = None
         self._user = user

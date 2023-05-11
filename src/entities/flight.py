@@ -20,6 +20,12 @@ class Flight:
 
             date:
                 The date of the flight in datetime.date form
+
+            plane:
+                The plane used in the flight as a Plane object
+
+            flight_id:
+                Flight's id. Sequential, obtained with len(user flights)
         """
 
         self._start = start
@@ -52,14 +58,3 @@ class Flight:
     @property
     def flight_id(self):
         return self._flight_id
-
-    def to_dict(self):
-        """Returns a dict with the start and destination"""
-        return {
-            'flight_id': self.flight_id,
-            'start': self._start,
-            'destination': self._destination,
-            'duration': self._duration,
-            'date': self._flight_date.isoformat(),
-            'plane': self._plane.tailnumber
-        }

@@ -12,6 +12,12 @@ class User:
         args:
             username:
                 The username of the user
+            flights:
+                (optional) A list of Flight objects representing the user's flights
+            planes:
+                (optional) A list of Plane objects representing the user's planes
+            flightplans:
+                (optional) A list of FlightPlan objects representing the user's flight plans
         '''
         self._username = username
 
@@ -95,9 +101,11 @@ class User:
         for _plane in self._planes:
             if _plane.plane_id == plane_id:
                 plane = _plane
+                break
         plane.add_flight_hours(hours)
 
     def _update_hours(self):
+        '''Updates the user's hours'''
         hours = 0
         if len(self._flights) > 0:
             for flight in self._flights:
@@ -105,9 +113,21 @@ class User:
         return round(hours, 3)
 
     def add_flightplan(self, flightplan: FlightPlan):
+        '''Adds a flight plan to the user's flightplans list
+
+        args:
+            flightplan:
+                The FlightPlan object to be added
+        '''
         self._flightplans.append(flightplan)
 
-    def sort_flights(self, selected_sorting):
+    def sort_flights(self, selected_sorting: str):
+        '''Sorts the user's flights depending on the given sorting option
+
+        Options: Added, Start, Destination, Date, Duration, Plane
+
+        If the given sorting option is not found, defaults to sorting by id (equal to Added)
+        '''
         if selected_sorting == 'Added':
             self._flights = sorted(
                 self._flights, key=lambda flight: flight.flight_id)
@@ -126,3 +146,6 @@ class User:
         elif selected_sorting == 'Plane':
             self._flights = sorted(
                 self._flights, key=lambda flight: flight.plane.tailnumber)
+        else:
+            self._flights = self._flights = sorted(
+                self._flights, key=lambda flight: flight.flight_id)

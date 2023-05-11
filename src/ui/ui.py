@@ -8,7 +8,19 @@ from datamanager.filemanager import FileManager
 
 
 class UI:
+    '''Responsible for handling view creation and changes'''
+
     def __init__(self, root, users: list, files: FileManager):
+        """Class constructor 
+
+        args:
+            root:
+                TKinter object that the view is contained in
+            users:
+                List of all users
+            files:
+                FileManager object responsible for handling the file operations
+        """
         self._root = root
         self._current_view = None
         self._users = users

@@ -2,6 +2,18 @@ class Plane:
     '''A class representing a plane that a user can select to use'''
 
     def __init__(self, model: str, year: int, tailnumber: str, plane_id: int):
+        '''Class constructor
+
+        args:
+            model:
+                The model of the plane
+            year:
+                Year of the plane (when it was built)
+            tailnumber:
+                Tailnumber of the plane
+            plane_id:
+                The plane's id. Sequential, obtained with len(user planes)
+        '''
         self._model = model
         self._tailnumber = tailnumber
         self._year = year
@@ -29,14 +41,10 @@ class Plane:
         return self._plane_id
 
     def add_flight_hours(self, hours: float):
-        self._hours += hours
+        '''Adds flight hours to the plane
 
-    @property
-    def plane_info(self):
-        return {
-            'plane_id': self.plane_id,
-            'model': self._model,
-            'year': self._year,
-            'tailnumber': self._tailnumber,
-            'hours': self._hours
-        }
+        args:
+            hours:
+                The hours to be added
+        '''
+        self._hours += hours

@@ -8,6 +8,18 @@ class UIUserNewFlight:
     '''Responsible for creating a view for adding new flight log entries'''
 
     def __init__(self, root, user: User, files: FileManager, return_home):
+        """Class constructor
+
+        args:
+            root:
+                TKinter object that the view is contained in
+            user:
+                The selected user's User object
+            files:
+                FileManager object responsible for handling the file operations
+            return_home:
+                Method responsible for creating the user's home view
+        """
         self._root = root
         self._frame = None
         self._user = user
@@ -121,7 +133,6 @@ class UIUserNewFlight:
         self._new_flight_plane_entry.grid(column=1, row=6)
 
     def _select_flightplan(self, *args):
-        # self._selected_flightplan
         for plan in self._user.flightplans:
             if plan.text_representation() == self._selected_flightplan.get():
                 sel_plan = plan

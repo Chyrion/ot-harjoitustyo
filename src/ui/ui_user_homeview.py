@@ -7,6 +7,22 @@ class UIUserHomeview:
     """Responsible for creating the home page for a user"""
 
     def __init__(self, root, user: User, handle_new_flight, handle_change_user, handle_user_info, handle_new_flightplan):
+        """Class constructor
+
+        args:
+            root:
+                TKinter object that the view is contained in
+            user:
+                The selected user's User object
+            handle_new_flight:
+                Method responsible for creating the new flight view
+            handle_change_user:
+                Method responsible for creating the user selection view
+            handle_user_info:
+                Method responsible for creating the user info view
+            handle_new_flightplan:
+                Method responsible for creating the new flight plan view
+        """
         self._root = root
         self._frame = None
         self._user = user

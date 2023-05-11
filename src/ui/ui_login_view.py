@@ -6,7 +6,18 @@ class UILoginView:
     """Login view for the user"""
 
     def __init__(self, root, users: list, files: FileManager, handle_user_select):
-        """Class constructor"""
+        """Class constructor
+
+        args:
+            root:
+                TKinter object that the view is contained in
+            users:
+                List of all users
+            files:
+                FileManager which is responsible for handling file operations
+            handle_user_select:
+                Method which is responsible for handling user selection
+        """
 
         self._root = root
         self._frame = None

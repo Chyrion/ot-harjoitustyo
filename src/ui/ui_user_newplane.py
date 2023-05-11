@@ -1,13 +1,24 @@
 from tkinter import ttk, constants
 from datamanager.filemanager import FileManager
 from entities.user import User
-from entities.plane import Plane
 
 
 class UIUserNewPlane:
     '''Responsible for creating a view for adding new planes'''
 
     def __init__(self, root, user: User, files: FileManager, return_home):
+        """Class constructor
+
+        args:
+            root:
+                TKinter object that the view is contained in
+            user:
+                The selected user's User object
+            files:
+                FileManager object responsible for handling the file operations
+            return_home:
+                Method responsible for creating the user's home view
+        """
         self._root = root
         self._frame = None
         self._user = user
