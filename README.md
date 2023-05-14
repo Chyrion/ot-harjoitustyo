@@ -6,7 +6,8 @@ Sovellus on lentosimulaattorin ohessa käytettävä lentolokikirja, sekä alkeel
 
 [Vaatimusmäärittely](dokumentaatio/vaatimusmaarittely.md)  
 [Changelog](dokumentaatio/changelog.md)  
-[Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)
-[Käyttohje](dokumentaatio/kayttoohje.md)
+[Tuntikirjanpito](dokumentaatio/tuntikirjanpito.md)  
+[Käyttöohje](dokumentaatio/kayttoohje.md)  
+[Testaus](dokumentaatio/testaus.md)
 
 
