@@ -4,6 +4,8 @@
 
 Suuri osa testauksesta tapahtuu [TestFileManager](../src/tests/datamanager/filemanager_test.py):n `FileManager`-luokan testien kautta. Testausta varten ei luoda erillistä kopioluokkaa, vaan luokasta luodaan sellaisenaan olio joka tallentaa sovelluksen tavoin testeissä tapahtuvat tiedot levylle. Testitiedostot kuitenkin poistetaan testien jälkeen.
 
+`User`-luokkaa testataan yhtä testiä lukuunottamatta luomalla uusi User-olio, jonka sisältämiin listoihin lisätään testin mukaiset oliot. Testit ovat kaikki `User`:in sisäisiä, eli niillä ei ole yhteyttä tiedosto-operaatioihin, vaan se käyttää muita `entities`-ryhmästä löytyviä olioita. `User` on ainut `entity` joka suoranaisesti sisältää testattavan arvoista koodia, ja muut entityt testataan `FileManager` ja `User` testien kautta.
+
 ### Testauskattavuus
 
 Testauskattavuus on 88%.
