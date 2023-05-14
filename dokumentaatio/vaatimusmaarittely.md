@@ -19,7 +19,6 @@ Sovellukseen voi luoda useamman käyttäjän, joiden tiedot tallentuvat erikseen
 - Käyttäjä näkee yhteenvedon omista lennoistaan (tehty)
 - Käyttäjä voi avata näkymän, josta voi lisätä uuden lennon lokikirjaan (tehty)
   - Tietoja: Päiväys, lähtö, loppu, kesto, lentokone (tehty)
-    - Pituuden voi merkitä itse, tai se voidaan automaattisesti laskea
 - Käyttäjä voi avata näkymän, jossa voi suunnitella lennon paikasta A paikkaan B (tehty)
   - Lennon voi tallentaa pohjana, jota voi käyttää lokikirjaan lisäämisessä (tehty)
 - Lokikirjan järjestely eri kriteereillä: pituus, päiväys, lentokone, lähtö, loppu (tehty)
@@ -29,7 +28,7 @@ Sovellukseen voi luoda useamman käyttäjän, joiden tiedot tallentuvat erikseen
 
 - Salasanat
 - Näkymässä voi erotella yleisilmailun (pienkoneet) ja lentoyhtiölennot (matkustajakoneet) lennot
-
+- Lennon lisäämisessä voi merkitä matkan pituuden itse, tai antaa sovelluksen laskea se
 - Lennon suunnittelussa voi lisätä välietappeja
   - Mikäli sopiva API tai muu tietokanta löytyy, voi lentoihin lisätä muitakin kohteita kuin lentokenttiä (esim. VOR)
 - Suunnittelija antaa lennon matkallisen pituuden
