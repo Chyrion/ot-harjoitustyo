@@ -10,4 +10,6 @@
 | 25.04.   | 6      | Käyttäjän infonäkymä, lentokoneiden lisääminen käyttäjälle, käyttäjätietojen käsittelyn parantelua                         |
 | 01.05.   | 1      | Tiedostotallennusjärjestelmän uudelleenrakentamisen tutkiminen                                                             |
 | 02.05    | 7      | Tallennusjärjestelmän uusiminen ja sen myötä olioiden käsittelyyn vaihtaminen, lentosuunnitelmien lisäys, lokin järjestely |
-| Yhteensä | 32     |
+| 11.05.   | 3      | Dokumentaation laajentaminen, testaamista lisätty                                                                          |
+| 14.05    | 2      | Dokumentaation laajentaminen, projektin viimeistely                                                                        |
+| Yhteensä | 35     |
